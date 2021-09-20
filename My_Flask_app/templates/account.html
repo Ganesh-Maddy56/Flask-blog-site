@@ -1,0 +1,65 @@
+{% extends 'newindex.html' %}
+{% block title %}
+    <title>Account</title>
+{% endblock %}
+
+{% block content %}
+<div class="pic">
+    <img class="my_image" src="{{ image_file }}">
+    <h2 style="color: black;">Account Info</h2>
+    <p style="color: white;">{{current_user.username}}</p>
+    <p style="color: white;">{{ current_user.email}}</p>
+</div>
+<form method="POST" autocomplete="off" enctype="multipart/form-data">
+    {{ form.hidden_tag() }}   
+    <div class="form-group">
+        {{ form.username.label(class="form-label") }}
+            {% if form.username.errors %}
+                {{ form.username(class="form-control is-invalid") }}
+                    {% for i in form.username.errors %}
+                        <div class="invalid-text">
+                            <span>{{ i }}</span>
+                        </div>   
+                    {% endfor %}
+            {% else %}
+                <p>{{ form.username( class="form-control") }}</p>
+            {% endif %}
+    </div>
+
+    <div class="form-group">
+        {{ form.email.label(class="form-label") }}
+            {% if form.email.errors %}
+                {{ form.email(class="form-control is-invalid") }}
+                    {% for i in form.email.errors %}
+                        <div class="invalid-text">
+                            <span>{{ i }}</span>
+                        </div>
+                    {% endfor %}
+            {% else %}
+                <p>{{ form.email( class="form-control") }}</p>
+            {% endif %}
+    </div>
+    <div class="upload-pic">
+        {{ form.picture.label(class="form-label") }}
+            {% if form.picture.errors %}
+                {{ form.picture(class="form-control is-invalid") }}
+                    {% for i in form.picture.errors %}
+                        <div class="invalid-text">
+                            <span>{{ i }}</span>
+                        </div>
+                    {% endfor %}
+            {% else %}
+                <p>{{ form.picture( class="form-control") }}</p>
+            {% endif %}
+    </div>
+    <div id="submit">
+        {{ form.submit (class="btn btn-dark") }}
+    </div>
+</form>
+{% endblock %}
+
+
+
+
+
+
