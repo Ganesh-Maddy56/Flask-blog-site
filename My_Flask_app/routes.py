@@ -192,10 +192,10 @@ def save_user_pic(User_picture):
 def logout():
     
     if not current_user.is_authenticated:
-        flash('No User Loged-In, Login First')
+        flash('No-User Loged-In, Login First')
         return redirect(url_for('login'))
     else:
         form = Login_Form()
         logout_user()
-        flash('logedOut successfull')
+        flash('Loged-Out Successfull')
         return render_template('login_form.html',form = form)
