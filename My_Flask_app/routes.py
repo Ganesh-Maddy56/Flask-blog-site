@@ -1,4 +1,4 @@
-from wtforms.validators import URL
+from flask_wtf import form
 from My_Flask_app import app , GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET
 from flask import render_template, redirect, request, url_for, flash
 from flask_login import (
@@ -33,6 +33,7 @@ def create():
         return redirect(url_for('index'))
     
     if request.method == "POST":
+        lg_form = Login_Form()
         form = Registration_Form()
         if form.validate_on_submit():
             username = form.username.data
@@ -77,7 +78,7 @@ def login():
             user = UserData.query.filter_by(email=email).first()
             if user is not None and user.check_password(password):
                 login_user(user)
-                return redirect(url_for('index'))
+                return render_template('newindex.html')
             else:
                 flash("You Have to register for login, or your password may be invalid")
                 return render_template('login_form.html',form=form)
@@ -174,11 +175,10 @@ def account():
     else:
         flash("You Have to login first")
         return redirect(url_for('login'))
-
  
 def save_user_pic(User_picture):
     secret = secrets.token_hex(8)
-    _, f_ext = os.path.splitext(User_picture.filename)
+    _, f_ext = os.path.splitext(User_picture.filename) 
     picture_name = secret + f_ext
     file_path = os.path.join(app.root_path, 'static/profile_pics', picture_name)
     img_size = (125,125)
@@ -190,10 +190,12 @@ def save_user_pic(User_picture):
 
 @app.route("/logout")
 def logout():
-    if current_user.is_authenticated:
-        logout_user()
-        flash("Loged out successfull !")
-        return redirect(url_for('index'))
+    
+    if not current_user.is_authenticated:
+        flash('No User Loged-In, Login First')
+        return redirect(url_for('login'))
     else:
-        flash("No User loged In")
-        return redirect(url_for('login')) 
+        form = Login_Form()
+        logout_user()
+        flash('logedOut successfull')
+        return render_template('login_form.html',form = form)

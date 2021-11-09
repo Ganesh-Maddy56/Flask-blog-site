@@ -19,19 +19,18 @@
     <link rel="stylesheet" href="{{ url_for('static', filename = 'new.css')}}">
 </head>
 <body>
-    <div class="top-div">
         {% if current_user.is_authenticated %}
             <h2 id="user">Welcome {{current_user.username}}</h2>
         {% endif %}
-        <div class="top-div">
-            {% with messages = get_flashed_messages() %}
-                {% if messages %}
-                    {% for i in messages %}
-                        <h2 id="user">{{i}} </h2>
-                    {% endfor %}
-                {% endif %}
-            {% endwith %}
-        </div>
+        
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for i in messages %}
+                    <div id="snackbar">{{ i }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
     </div>
     <div id="navbar">
         <a href="{{url_for('account')}}">Account</a>
@@ -45,7 +44,6 @@
     </div>
 
     <div class="container">
-        <div class="forform">
             {% block content %}
 
             {% endblock %}
