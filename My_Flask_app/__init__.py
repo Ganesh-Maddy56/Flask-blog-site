@@ -16,7 +16,7 @@ from My_Flask_app import forms, routes
 db.init_app(app)
 mail = Mail(app)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:sharook@localhost/website'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:shar@localhost/Users'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO'] = False
 app.config['SECRET_KEY'] = '75e64d694b5c6602148044c51106738c'

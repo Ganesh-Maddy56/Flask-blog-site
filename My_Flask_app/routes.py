@@ -1,3 +1,4 @@
+from email.mime import image
 from flask_wtf import form
 from My_Flask_app import app , GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET
 from flask import render_template, redirect, request, url_for, flash
@@ -22,9 +23,9 @@ from PIL import Image
 @app.route("/")
 def index():
     if current_user.is_authenticated:
-        return render_template("newindex.html")
+        return render_template("HomePageBase.html")
     else:
-        return render_template("newindex.html")
+        return render_template("HomePageBase.html")
 
 
 @app.route('/register',methods=["POST","GET"])
@@ -170,6 +171,7 @@ def account():
             form.email.data = current_user.email
 
         image_file = url_for('static',filename='profile_pics/' + current_user.image_file)
+        render_template('HomePageBase.html',image_file = image_file)
         return render_template('account.html',image_file=image_file,form=form)
 
     else:
@@ -181,7 +183,7 @@ def save_user_pic(User_picture):
     _, f_ext = os.path.splitext(User_picture.filename) 
     picture_name = secret + f_ext
     file_path = os.path.join(app.root_path, 'static/profile_pics', picture_name)
-    img_size = (125,125)
+    img_size = (120,120)
     i = Image.open(User_picture)
     i.thumbnail(img_size)
     i.save(file_path)

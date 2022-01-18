@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='HomePageBase.css')}}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <title>HomePage</title>
+</head>
+<body>
+    <div class="topcontainer">
+        <div class="topcontainer-child1">
+            <img src="" alt="Logo" class="logo-image">
+            <a href="" class="navigation-links">Home</a>
+            <a href="" class="navigation-links">Blogs</a>
+            <a href="" class="navigation-links">Guides</a>
+            <a href="" class="navigation-links responsive">About</a>
+        </div>
+        <div class="topcontainer-child2">
+            <input type="text" placeholder="Search ..." style="cursor: text; width: 150px;text-transform: none;" class="searchbar">
+            <a href="{{url_for('login')}}" class="button-17 Login">Login</a>
+            <a href="{{url_for('logout')}}" class="button-17 Login">Logout</a>
+            <button class="button-17" role="button" onclick="location.href = 'register'">SignUp</button>
+            <a href="{{url_for('account')}}" class="user-link">
+            <img src="{{url_for('static', filename = 'account.gif')}}" alt="Profile" class="UserAccount-display">
+            </a>
+        </div>
+    </div>
+    <hr style="background: black; border: 1px solid;">
+</body>
+</html>

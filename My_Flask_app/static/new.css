@@ -97,7 +97,9 @@ Navigation and top are over
 }
 .my_image{
     border-radius: 50%;
-    height: 150px;
+    height: 70px;
+    border: 2px solid rebeccapurple; 
+
 }
 
 .upload-pic{
