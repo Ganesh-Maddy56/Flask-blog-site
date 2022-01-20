@@ -5,6 +5,7 @@ from flask_login import LoginManager
 import os
 
 
+
 GOOGLE_CLIENT_ID = os.getenv("GOOGLE_CLIENT_ID")
 GOOGLE_CLIENT_SECRET = os.getenv("GOOGLE_CLIENT_SECRET")
 os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
@@ -16,10 +17,11 @@ from My_Flask_app import forms, routes
 db.init_app(app)
 mail = Mail(app)
 
+app.config.from_pyfile('settings.py')
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:shar@localhost/Information'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO'] = False
-app.config['SECRET_KEY'] = '75e64d694b5c6602148044c51106738c'
+# app.config['SECRET_KEY'] = '75e64d694b5c6602148044c51106738c'
 
 
 app.config["MAIL_SERVER"] = 'smtp.gmail.com'

@@ -1,21 +1,30 @@
+hmtl{
+    width: 100vw;
+}
 body{
     min-height: 100vh;
+    width: 100%;
+    background: linear-gradient(to right, #2b5876, #4e4376);
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     scroll-behavior: smooth;
-    background: linear-gradient(to right, #2b5876, #4e4376)
+    padding-left: 50px;
+    padding-right: 50px;
+
 }
 table{
     font-family: 'Poppins', sans-serif;
+}
+.table>:not(:first-child) {
+    border-top: none;
 }
 th{
     color: linear-gradient(to right, #000428, #004e92);;
     text-transform: uppercase;
 }
-.table-bordered{
-    border: 1px solid teal;
-}
+
 th, td{
     padding: .8rem;
     font-size: 1.1rem;
@@ -28,26 +37,28 @@ td:nth-child(3), td:nth-child(5){
     text-transform: capitalize;
 }
 .table-full{
-    margin-left: 50px;
-    margin-right: 50px;
     box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px,rgba(0, 0, 0, .14) 0 6px 10px 0,rgba(0, 0, 0, .12) 0 1px 18px 0;
-    margin-top: 100px;
+    margin-top: 50px;
     margin-bottom: 50px;
+    border-collapse: collapse;
+}
+.sticky-top{
+    top: -1px;
 }
 
 @media screen and (max-width:620px){
-
-
+    body{
+        padding-left: 6px;
+        padding-right: 6px;
+    }
+    
+    .table-bordered>:not(caption)>* {
+        border-width: 0px
+    }
     table{
         border: none;
     }
-    td:nth-child(3){
-        width: 100%;
-    }
-    .table-full{
-        margin-left: 5px;
-        margin-right: 5px;
-    }
+    
     thead{
         display: none;
     }
@@ -55,7 +66,7 @@ td:nth-child(3), td:nth-child(5){
         display: block;
     }
     td:last-child{
-        margin-bottom: 10px;
+        margin-bottom: 25px;
     }
 
     td:first-child{
@@ -66,22 +77,21 @@ td:nth-child(3), td:nth-child(5){
         text-transform: uppercase;
     }
     td:nth-child(2)::before{
-        content: "JobLink - ";
-        border-bottom: 1px solid white;
+        content: "JobLink -> ";
+        border-bottom: 1px solid black;
     }
     td:nth-child(3)::before{
-        content: "Position / Role - ";
-        border-bottom: 1px solid white;
+        content: "Position / Role -> ";
+        border-bottom: 1px solid black;
 
     }
     td:nth-child(4)::before{
-        content: "Salary - ";
-        border-bottom: 1px solid white;
+        content: "Salary -> ";
+        border-bottom: 1px solid black;
 
     }
     td:nth-child(5)::before{
-        content: "Eligibility-Batch - ";
-        border-bottom: 1px solid white;
+        content: "Eligibility-Batch -> ";
 
     }
     td{
@@ -91,7 +101,10 @@ td:nth-child(3), td:nth-child(5){
         float: left;
         margin-right: 4rem;
         font-weight: bold;
-        color:black;
-        
+        color: black;
+    }
+    .table-striped>tbody>tr:nth-of-type(odd)>* {
+        --bs-table-accent-bg: none;
+        color: black;
     }
 }
