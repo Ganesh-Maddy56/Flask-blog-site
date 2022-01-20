@@ -45,6 +45,9 @@ td:nth-child(3), td:nth-child(5){
 .sticky-top{
     top: -1px;
 }
+.nav-link{
+    font-size: 1.2rem;
+}
 
 @media screen and (max-width:620px){
     body{
@@ -70,18 +73,18 @@ td:nth-child(3), td:nth-child(5){
     }
 
     td:first-child{
-        background: rgba(92, 50, 93, 1);
+        background: rgb(127, 76, 128);
         color: lightgrey;
-        font-weight: 700;
+        font-weight: bolder;
         text-align: center;
-        text-transform: uppercase;
+        text-transform: capitalize;
     }
     td:nth-child(2)::before{
         content: "JobLink -> ";
         border-bottom: 1px solid black;
     }
     td:nth-child(3)::before{
-        content: "Position / Role -> ";
+        content: "Role -> ";
         border-bottom: 1px solid black;
 
     }
@@ -91,7 +94,7 @@ td:nth-child(3), td:nth-child(5){
 
     }
     td:nth-child(5)::before{
-        content: "Eligibility-Batch -> ";
+        content: "Eligibility-> ";
 
     }
     td{

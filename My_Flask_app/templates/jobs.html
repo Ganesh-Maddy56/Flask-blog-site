@@ -39,7 +39,7 @@
     <table class="table table-borderless table-responsive table-full table-striped table-sm table-secondary caption-top" style="color: black;">
         <caption style="color: #f7f7f7;">List of Jobs</caption>
         <thead class="sticky-top">
-            <tr class="table-dark">
+            <tr class="table-dark" style="color: rgba(255,255,255,.55); letter-spacing: 1px;">
                 <th>Company_Name</th>
                 <th>Job_Link</th>
                 <th>Position</th>
@@ -51,7 +51,7 @@
             {% for user in data[::-1] %}
             <tr>
                 <td>{{ user.companyname }}</td>
-                <td> <a href="{{ user.joblink }}" style="text-decoration: none; font-weight: bold; text-transform: capitalize;">Click here to apply for-{{user.companyname}}</a></td>
+                <td> <a href="{{ user.joblink }}" style="text-decoration: none; font-weight: bold; text-transform: capitalize;">Click here to apply -{{user.companyname}}</a></td>
                 <td>{{ user.jd }}</td>
                 <td>{{ user.salary }}</td>
                 <td>{{ user.eligiblity }}</td>
