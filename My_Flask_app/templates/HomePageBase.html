@@ -8,6 +8,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <title>HomePage</title>
 </head>
 <body>
@@ -17,7 +21,7 @@
             <a href="" class="navigation-links">Home</a>
             <a href="" class="navigation-links">Blogs</a>
             <a href="" class="navigation-links">Guides</a>
-            <a href="" class="navigation-links responsive">About</a>
+            <a href="{{url_for('job_template')}}" class="navigation-links responsive">Daily-JobOpenings</a>
         </div>
         <div class="topcontainer-child2">
             <input type="text" placeholder="Search ..." style="cursor: text; width: 150px;text-transform: none;" class="searchbar">
@@ -29,6 +33,8 @@
             </a>
         </div>
     </div>
-    <hr style="background: black; border: 1px solid;">
+    <div class="home-content">
+        Hello
+    </div>
 </body>
 </html>

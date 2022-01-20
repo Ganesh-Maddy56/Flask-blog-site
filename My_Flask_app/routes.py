@@ -1,4 +1,7 @@
+from calendar import month
+from datetime import date
 from email.mime import image
+from operator import methodcaller
 from flask_wtf import form
 from My_Flask_app import app , GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET
 from flask import render_template, redirect, request, url_for, flash
@@ -7,8 +10,8 @@ from flask_login import (
     login_required,
     login_user,
     logout_user)
-from My_Flask_app.forms import AccountForm, Registration_Form,Login_Form
-from My_Flask_app.models import db,UserData
+from My_Flask_app.forms import AccountForm, Registration_Form,Login_Form, Jobs_Form
+from My_Flask_app.models import db,UserData,JobsFromDataBase
 from oauthlib.oauth2 import WebApplicationClient
 
 import json
@@ -79,7 +82,7 @@ def login():
             user = UserData.query.filter_by(email=email).first()
             if user is not None and user.check_password(password):
                 login_user(user)
-                return render_template('newindex.html')
+                return render_template('HomePageBase.html')
             else:
                 flash("You Have to register for login, or your password may be invalid")
                 return render_template('login_form.html',form=form)
@@ -192,7 +195,6 @@ def save_user_pic(User_picture):
 
 @app.route("/logout")
 def logout():
-    
     if not current_user.is_authenticated:
         flash('No-User Loged-In, Login First')
         return redirect(url_for('login'))
@@ -201,3 +203,25 @@ def logout():
         logout_user()
         flash('Loged-Out Successfull')
         return render_template('login_form.html',form = form)
+
+
+@app.route("/admin", methods= ["POST", "GET"])
+def adminform():
+    form = Jobs_Form()
+    if request.method == "POST":
+        job_form = Jobs_Form()
+        data = ( job_form.companyname.data, job_form.joblink.data, job_form.jd.data, job_form.salary.data, job_form.eligibility.data)
+        job_fields = JobsFromDataBase(companyname = job_form.companyname.data, joblink = job_form.joblink.data, jd = job_form.jd.data, salary = job_form.salary.data, eligiblity = job_form.eligibility.data)
+        db.session.add(job_fields)
+        db.session.commit()
+        flash("Jobs Updated successfully...")
+        return redirect(url_for('adminform'))
+    else:
+        return render_template("Admin_jobs.html",form=form)
+
+@app.route('/jobs')
+def job_template():
+    start = date(year=2022,month=1,day=1)
+    end = date(year=2022, month=1, day=30)
+    data = JobsFromDataBase.query.all()
+    return render_template("jobs.html",data = data)

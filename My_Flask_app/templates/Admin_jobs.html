@@ -1,0 +1,44 @@
+{% extends 'newindex.html' %}
+{% block title %}
+    <title>Admin-Panel</title>
+{% endblock %}
+
+
+{%block content%}
+
+    <div class="forform">
+        <form method="POST" autocomplete="off">
+            {{form.hidden_tag()}}
+            <div class="form-group">
+                {{ form.companyname.label(class="form-label") }}
+                <p>{{ form.companyname( class="form-control") }}</p>
+            </div>
+
+            <div class="form-group">
+                {{ form.joblink.label(class="form-label") }}
+                <p>{{ form.joblink( class="form-control") }}</p>
+            </div>
+
+            <div class="form-group">
+                {{ form.jd.label(class="form-label") }}
+                <p>{{ form.jd( class="form-control") }}</p>
+            </div>
+
+            <div class="form-group">
+                {{ form.salary.label(class="form-label") }}
+                <p>{{ form.salary( class="form-control") }}</p>
+            </div>
+
+            <div class="form-group">
+                {{ form.eligibility.label(class="form-label") }}
+                <p>{{ form.eligibility( class="form-control")}}</p>
+            </div>
+            
+            
+            <div id="submit">
+                {{form.submit (class="btn btn-dark")}}
+            </div>
+        </form>
+    </div>
+
+{% endblock %}

@@ -22,6 +22,13 @@ class Login_Form(FlaskForm):
     remember = BooleanField('Remember Me')
     submit = SubmitField('Login')
 
+class Jobs_Form(FlaskForm):
+    companyname = StringField('companyname')
+    joblink = StringField('joblink')
+    jd = StringField('jd',validators=[Length(max=1000)])
+    salary = StringField('salary')
+    eligibility = StringField('eligibility')
+    submit = SubmitField('upload')
 
 
 class AccountForm(FlaskForm):

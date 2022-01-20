@@ -72,7 +72,8 @@ Navigation and top are over
 
 
 .form-group{
-    width: 100%;
+    
+    min-width: 400px;
 }
 
 .form-label{

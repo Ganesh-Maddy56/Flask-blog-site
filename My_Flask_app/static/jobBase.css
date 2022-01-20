@@ -1,0 +1,97 @@
+body{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    scroll-behavior: smooth;
+    background: linear-gradient(to right, #2b5876, #4e4376)
+}
+table{
+    font-family: 'Poppins', sans-serif;
+}
+th{
+    color: linear-gradient(to right, #000428, #004e92);;
+    text-transform: uppercase;
+}
+.table-bordered{
+    border: 1px solid teal;
+}
+th, td{
+    padding: .8rem;
+    font-size: 1.1rem;
+    text-align: center;
+}
+td:first-child{
+    text-transform: capitalize;
+}
+td:nth-child(3), td:nth-child(5){
+    text-transform: capitalize;
+}
+.table-full{
+    margin-left: 50px;
+    margin-right: 50px;
+    box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px,rgba(0, 0, 0, .14) 0 6px 10px 0,rgba(0, 0, 0, .12) 0 1px 18px 0;
+    margin-top: 100px;
+    margin-bottom: 50px;
+}
+
+@media screen and (max-width:620px){
+
+
+    table{
+        border: none;
+    }
+    td:nth-child(3){
+        width: 100%;
+    }
+    .table-full{
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+    thead{
+        display: none;
+    }
+    td{
+        display: block;
+    }
+    td:last-child{
+        margin-bottom: 10px;
+    }
+
+    td:first-child{
+        background: rgba(92, 50, 93, 1);
+        color: lightgrey;
+        font-weight: 700;
+        text-align: center;
+        text-transform: uppercase;
+    }
+    td:nth-child(2)::before{
+        content: "JobLink - ";
+        border-bottom: 1px solid white;
+    }
+    td:nth-child(3)::before{
+        content: "Position / Role - ";
+        border-bottom: 1px solid white;
+
+    }
+    td:nth-child(4)::before{
+        content: "Salary - ";
+        border-bottom: 1px solid white;
+
+    }
+    td:nth-child(5)::before{
+        content: "Eligibility-Batch - ";
+        border-bottom: 1px solid white;
+
+    }
+    td{
+        text-align: right;
+    }
+    td::before{
+        float: left;
+        margin-right: 4rem;
+        font-weight: bold;
+        color:black;
+        
+    }
+}
