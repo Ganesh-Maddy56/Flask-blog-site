@@ -12,35 +12,21 @@
     <title>DailyJobs-vacent</title>
 </head>
 <body>
-    <div class="container">
-    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-        <div class="container-md">
-          <a class="navbar-brand" href="#">
-            Navbar</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="true" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto ">
-              <li class="nav-item">
-                <a class="nav-link " href="{{url_for('index')}}">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link " href="{{url_for('job_template')}}">Jobs</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">About</a>
-              </li>
-            </ul>
-          </div>
+    <div class="container-fluid">
+      <nav class="navbar navbar-dark sticky-top" style="background-color: #212529; font-family: 'Poppins';">
+        <div class="container">
+          <a class="navbar-brand">Navbar</a>
+          <form class="d-flex">
+            <input class="form-control me-2" type="text" placeholder="Search Company" aria-label="Search" id="myinput" onkeyup="tablesearch()">
+          </form>
         </div>
-    </nav>
+      </nav>
     </div>
-    <table class="table table-borderless table-responsive table-full table-striped table-sm table-secondary caption-top" style="color: black;">
-        <caption style="color: #f7f7f7;">List of Jobs</caption>
+    <table id="mytable" class="table table-secondary table-striped bg-dark table-responsive table-borderless table-full table-sm caption-top ">
+        <caption id="caption" style="color: gray; text-transform: capitalize; font-weight: bold;">List of Jobs</caption>
         <thead class="sticky-top">
-            <tr class="table-dark" style="color: rgba(255,255,255,.55); letter-spacing: 1px;">
-                <th>Company_Name</th>
+            <tr style="color: white; letter-spacing: 1px; font-weight: bold;" class="table table-dark">
+                <th class="th-color">Company_Name</th>
                 <th>Job_Link</th>
                 <th>Position</th>
                 <th>Salary</th>
@@ -63,5 +49,30 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     
+    <script>
+      function tablesearch(){
+        let input, filter, table, te, td, txtvalue;
+        
+        input = document.getElementById("myinput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("mytable");
+        tr = table.getElementsByTagName("tr")
+        
+        for (let i =0; i < tr.length; i++){
+          td = tr[i].getElementsByTagName("td")[0];
+          if(td){
+            txtvalue = td.textContent || td.innerText;
+            if(txtvalue.toUpperCase().indexOf(filter) > -1){
+              tr[i].style.display = "";
+            }
+            else{
+              tr[i].style.display = "none";
+            }
+          }
+        }
+      }
+
+    </script>
+
 </body>
 </html>

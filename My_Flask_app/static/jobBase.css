@@ -4,11 +4,7 @@ hmtl{
 body{
     min-height: 100vh;
     width: 100%;
-    background: linear-gradient(to right, #2b5876, #4e4376);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    background: #e2e3e5;
     scroll-behavior: smooth;
     padding-left: 50px;
     padding-right: 50px;
@@ -21,7 +17,6 @@ table{
     border-top: none;
 }
 th{
-    color: linear-gradient(to right, #000428, #004e92);;
     text-transform: uppercase;
 }
 
@@ -41,6 +36,7 @@ td:nth-child(3), td:nth-child(5){
     margin-top: 50px;
     margin-bottom: 50px;
     border-collapse: collapse;
+    outline: none;
 }
 .sticky-top{
     top: -1px;
@@ -49,14 +45,25 @@ td:nth-child(3), td:nth-child(5){
     font-size: 1.2rem;
 }
 
+#myinput{
+    border-radius: 3rem;
+    border: none;
+}
 @media screen and (max-width:620px){
+    .table-secondary::after{
+        color: black;
+    }
+    tr{
+        background-color: #e2e3e5;
+    }
+
     body{
         padding-left: 6px;
         padding-right: 6px;
+        background-color: black;
     }
-    
     .table-bordered>:not(caption)>* {
-        border-width: 0px
+        border-width: 0
     }
     table{
         border: none;
@@ -71,6 +78,9 @@ td:nth-child(3), td:nth-child(5){
     td:last-child{
         margin-bottom: 25px;
     }
+    tr{
+        border-bottom: 10px solid;
+    }
 
     td:first-child{
         background: rgb(127, 76, 128);
@@ -81,21 +91,17 @@ td:nth-child(3), td:nth-child(5){
     }
     td:nth-child(2)::before{
         content: "JobLink -> ";
-        border-bottom: 1px solid black;
     }
     td:nth-child(3)::before{
         content: "Role -> ";
-        border-bottom: 1px solid black;
 
     }
     td:nth-child(4)::before{
         content: "Salary -> ";
-        border-bottom: 1px solid black;
 
     }
     td:nth-child(5)::before{
         content: "Eligibility-> ";
-
     }
     td{
         text-align: right;
@@ -103,11 +109,18 @@ td:nth-child(3), td:nth-child(5){
     td::before{
         float: left;
         margin-right: 4rem;
-        font-weight: bold;
+        font-weight: 500;
         color: black;
     }
     .table-striped>tbody>tr:nth-of-type(odd)>* {
         --bs-table-accent-bg: none;
+        border-bottom: none;
+    }
+    .table-borderless>:not(caption)>*>* {
+        border-bottom-width: 0;
+    }
+    .table-striped>tbody>tr:nth-of-type(odd)>* {
         color: black;
     }
+    
 }
