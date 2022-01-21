@@ -1,112 +1,152 @@
-hmtl{
+hmtl {
     width: 100vw;
 }
-body{
+
+body {
     min-height: 100vh;
     width: 100%;
     background: #e2e3e5;
     scroll-behavior: smooth;
-    padding-left: 50px;
-    padding-right: 50px;
-
+    display: flex;
+    flex-direction: column;
 }
-table{
+
+.container {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+table {
     font-family: 'Poppins', sans-serif;
 }
+
 .table>:not(:first-child) {
     border-top: none;
 }
-th{
+
+th {
     text-transform: uppercase;
 }
 
-th, td{
+th,
+td {
     padding: .8rem;
     font-size: 1.1rem;
     text-align: center;
 }
-td:first-child{
+
+td:first-child {
     text-transform: capitalize;
 }
-td:nth-child(3), td:nth-child(5){
+
+td:nth-child(3),
+td:nth-child(5) {
     text-transform: capitalize;
 }
-.table-full{
-    box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px,rgba(0, 0, 0, .14) 0 6px 10px 0,rgba(0, 0, 0, .12) 0 1px 18px 0;
-    margin-top: 50px;
+
+#footer {
+    margin-top: auto;
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.table-full {
+    box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px, rgba(0, 0, 0, .14) 0 6px 10px 0, rgba(0, 0, 0, .12) 0 1px 18px 0;
+    margin-top: 30px;
     margin-bottom: 50px;
     border-collapse: collapse;
     outline: none;
+    height: 150px;
+    overflow-y: auto;
+    vertical-align: middle;
 }
-.sticky-top{
+
+.sticky-top {
     top: -1px;
 }
-.nav-link{
+
+#myinput {
+    text-align: center;
+}
+
+.nav-link {
     font-size: 1.2rem;
 }
 
-#myinput{
+#myinput {
     border-radius: 3rem;
     border: none;
 }
-@media screen and (max-width:620px){
-    .table-secondary::after{
+
+#home-nav,
+.dp {
+    margin-left: 1rem;
+}
+
+.dp {
+    margin-right: 1rem;
+}
+
+.navbar {
+    border-bottom-left-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+}
+
+#login-form {
+    text-align: -webkit-center;
+}
+
+@media screen and (max-width:630px) {
+    .table-secondary::after {
         color: black;
     }
-    tr{
+    tr {
         background-color: #e2e3e5;
     }
-
-    body{
-        padding-left: 6px;
-        padding-right: 6px;
+    body {
         background-color: black;
     }
     .table-bordered>:not(caption)>* {
         border-width: 0
     }
-    table{
+    table {
         border: none;
     }
-    
-    thead{
+    thead {
         display: none;
     }
-    td{
+    td {
         display: block;
     }
-    td:last-child{
+    td:last-child {
         margin-bottom: 25px;
     }
-    tr{
+    tr {
         border-bottom: 10px solid;
     }
-
-    td:first-child{
+    td:first-child {
         background: rgb(127, 76, 128);
         color: lightgrey;
         font-weight: bolder;
         text-align: center;
         text-transform: capitalize;
     }
-    td:nth-child(2)::before{
+    td:nth-child(2)::before {
         content: "JobLink -> ";
     }
-    td:nth-child(3)::before{
+    td:nth-child(3)::before {
         content: "Role -> ";
-
     }
-    td:nth-child(4)::before{
+    td:nth-child(4)::before {
         content: "Salary -> ";
-
     }
-    td:nth-child(5)::before{
+    td:nth-child(5)::before {
         content: "Eligibility-> ";
     }
-    td{
+    td {
         text-align: right;
     }
-    td::before{
+    td::before {
         float: left;
         margin-right: 4rem;
         font-weight: 500;
@@ -122,5 +162,19 @@ td:nth-child(3), td:nth-child(5){
     .table-striped>tbody>tr:nth-of-type(odd)>* {
         color: black;
     }
-    
+    /* #top-container-home,
+    #topnav {
+        position: fixed;
+        top: 0;
+    } */
+    #caption {
+        margin-top: 60px;
+    }
+    #home-btn {
+        margin-right: 20px;
+    }
+    #home-nav,
+    .dp {
+        margin-left: 10px;
+    }
 }

@@ -220,8 +220,8 @@ def adminform():
         return render_template("Admin_jobs.html",form=form)
 
 @app.route('/jobs')
-def job_template():
+def jobs():
     start = date(year=2022,month=1,day=1)
     end = date(year=2022, month=1, day=30)
     data = JobsFromDataBase.query.all()
-    return render_template("jobs.html",data = data)
+    return render_template("job_template.html",data = data)

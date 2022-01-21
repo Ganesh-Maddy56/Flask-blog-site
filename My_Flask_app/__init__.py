@@ -16,6 +16,8 @@ from My_Flask_app import forms, routes
 
 db.init_app(app)
 mail = Mail(app)
+with app.app_context():
+    db.create_all()
 
 app.config.from_pyfile('settings.py')
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:shar@localhost/Information'

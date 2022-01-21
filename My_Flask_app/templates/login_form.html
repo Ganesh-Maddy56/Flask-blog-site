@@ -1,48 +1,39 @@
-{% extends 'newindex.html' %}
-{% block title %}
-    <title>Login</title>
-{% endblock %}
-
-{%block content%}
-<div class="forform">
-    <form method="POST" autocomplete="off" >
-        <div class="reg" style="text-align: center;">
-            Don't Have an account?
-            <a style="color: black;" href="{{url_for('create')}}">Sign in</a>
-        </div>
-        {{ form.hidden_tag() }}  
-        <div class="form-group">
-            {{ form.email.label(class="form-label") }}
-                {% if form.email.errors %}
-                    {{ form.email(class="form-control is-invalid") }}
-                        {% for i in form.email.errors %}
-                            <div class="invalid-text">
-                                <span>{{ i }}</span>
-                            </div>
-                        {% endfor %}
-                {% else %}
-                    <p>{{ form.email( class="form-control") }}</p>
+{% extends 'HomePageBase.html' %} {% block title %}
+<title>Login</title>
+{% endblock %} {%block content%}
+<div class="container" id="login-form">
+    <div class="forform mt-5 w-50">
+        <form method="POST" autocomplete="off">
+            <div class="reg" style="text-align: center;">
+                Don't Have an account?
+                <a style="color: black;" href="{{url_for('create')}}">Sign in</a>
+            </div>
+            {{ form.hidden_tag() }}
+            <div class="form-group row">
+                {{ form.email.label(class="form-label") }} {% if form.email.errors %} {{ form.email(class="form-control is-invalid") }} {% for i in form.email.errors %}
+                <div class="invalid-text">
+                    <span>{{ i }}</span>
+                </div>
+                {% endfor %} {% else %}
+                <p>{{ form.email( class="form-control") }}</p>
                 {% endif %}
-        </div>
+            </div>
 
 
-        <div class="form-group">
-            {{ form.password.label(class="form-label") }}
-                {% if form.password.errors %}
-                    {{ form.password(class="form-control is-invalid")}}
-                        {%for i in form.password.errors %}
-                            <div class="invalid-text">
-                                <span>{{ i }}</span>
-                            </div>
-                        {% endfor %}
-                {% else %}
-                    <p>{{ form.password( class="form-control") }}</p>
+            <div class="form-group row">
+                {{ form.password.label(class="form-label") }} {% if form.password.errors %} {{ form.password(class="form-control is-invalid")}} {%for i in form.password.errors %}
+                <div class="invalid-text">
+                    <span>{{ i }}</span>
+                </div>
+                {% endfor %} {% else %}
+                <p>{{ form.password( class="form-control") }}</p>
                 {% endif %}
-        </div>
-        
-        <div id="submit">
-            {{ form.submit (class="btn btn-dark")}}
-        </div>
-</form>
-</div>  
+            </div>
+
+            <div id="submit">
+                {{ form.submit (class="btn btn-dark")}}
+            </div>
+        </form>
+    </div>
+</div>
 {% endblock %}

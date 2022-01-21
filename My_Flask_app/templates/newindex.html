@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     {% block title %}
-        <title>Index</title>
+    <title>Index</title>
     {% endblock %}
 
     <meta charset="UTF-8">
@@ -11,27 +12,18 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" 
-    integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" 
-    integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" 
-    crossorigin="anonymous"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
     <link rel="stylesheet" href="{{ url_for('static', filename = 'new.css')}}">
-    <link rel="stylesheet" href="{{ url_for('static', filename = 'HomePageBase.css')}}">
 
 </head>
+
 <body>
-        {% if current_user.is_authenticated %}
-            <h2 id="user">Welcome {{current_user.username}}</h2>
-        {% endif %}
-        
-        {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                {% for i in messages %}
-                    <div id="snackbar">{{ i }}</div>
-                {% endfor %}
-            {% endif %}
-        {% endwith %}
+    {% if current_user.is_authenticated %}
+    <h2 id="user">Welcome {{current_user.username}}</h2>
+    {% endif %} {% with messages = get_flashed_messages() %} {% if messages %} {% for i in messages %}
+    <div id="snackbar">{{ i }}</div>
+    {% endfor %} {% endif %} {% endwith %}
 
     </div>
     <div id="navbar">
@@ -40,24 +32,19 @@
         <a href="{{url_for('login')}}">Login</a>
         <a href="{{url_for('logout')}}">Logout</a>
         <a href="{{url_for('google_login')}}">
-            <img src="https://img.icons8.com/color/35/000000/google-logo.png"/>
-            Sign Up
+            <img src="https://img.icons8.com/color/35/000000/google-logo.png" /> Sign Up
         </a>
     </div>
 
     <div class="container">
-            {% block content %}
-
-            {% endblock %}
-        </div>
+        {% block content %} {% endblock %}
+    </div>
     </div>
 
     <footer class="container-footer">
         <div class="f-box" style="font-size: small ;">
             <h5 style="font-weight: bold; font-size: medium;">ABOUT</h5>
-            <p style="text-align: justify;">This WebSite is build using Flask one of
-            the micro web framework written in python. Here you can learn about <span style="text-decoration: underline;"> DATA STRUCTURES & ALGORITHMS</span>
-            with an examples in python with cost free.</p><br>
+            <p style="text-align: justify;">This WebSite is build using Flask one of the micro web framework written in python. Here you can learn about <span style="text-decoration: underline;"> DATA STRUCTURES & ALGORITHMS</span> with an examples in python with cost free.</p><br>
             <div class="foot-mail">
                 <i class="fas fa-code-branch"><small style="font-family: cursive;"> Learn DS & ALGO</small></i>
             </div>
@@ -71,7 +58,7 @@
             </div>
         </div>
     </footer>
-  
+
     <script src="{{url_for('static',filename = 'javascript.js')}}"></script>
 </body>
 
