@@ -95,6 +95,96 @@ td:nth-child(5) {
 #login-form {
     text-align: -webkit-center;
 }
+#radius-body{
+    border-radius: 2rem;
+    background: #e2e3e5;
+    box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px, rgba(0, 0, 0, .14) 0 6px 10px 0, rgba(0, 0, 0, .12) 0 1px 18px 0;
+
+}
+#custom-login{
+    margin-top: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+/* snack bar */
+#snackbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+    /* Hidden by default. Visible on click */
+    min-width: 50%;
+    /* Set a default minimum width */
+    /* margin-left: 50%; Divide value of min-width by 2 */
+    background-color: pink;
+    /* Black background color */
+    color: black;
+    /* White text color */
+    text-align: center;
+    /* Centered text */
+    border-radius: 2px;
+    /* Rounded borders */
+    padding: 16px;
+    /* Padding */
+    position: fixed;
+    /* Sit on top of the screen */
+    z-index: 1;
+    /* Add a z-index if needed */
+    left: 50%;
+    /*Center the snackbar*/
+    bottom: 30px;
+    /* 30px from the bottom */
+}
+
+#snackbar.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 3s;
+    animation: fadein 0.5s, fadeout 0.5s 3s;
+}
+@-webkit-keyframes fadein {
+    from {
+        bottom: 0;
+        opacity: 0;
+    }
+    to {
+        bottom: 30px;
+        opacity: 1;
+    }
+}
+
+@keyframes fadein {
+    from {
+        bottom: 0;
+        opacity: 0;
+    }
+    to {
+        bottom: 30px;
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadeout {
+    from {
+        bottom: 30px;
+        opacity: 1;
+    }
+    to {
+        bottom: 0;
+        opacity: 0;
+    }
+}
+
+@keyframes fadeout {
+    from {
+        bottom: 30px;
+        opacity: 1;
+    }
+    to {
+        bottom: 0;
+        opacity: 0;
+    }
+}
 
 @media screen and (max-width:630px) {
     .table-secondary::after {
@@ -104,7 +194,7 @@ td:nth-child(5) {
         background-color: #e2e3e5;
     }
     body {
-        background-color: black;
+        background-color: #e2e3e5;
     }
     .table-bordered>:not(caption)>* {
         border-width: 0
@@ -119,12 +209,13 @@ td:nth-child(5) {
         display: block;
     }
     td:last-child {
-        margin-bottom: 25px;
+        margin-bottom: 10px;
+
     }
-    tr {
-        border-bottom: 10px solid;
-    }
+
     td:first-child {
+        /* border-top-left-radius: 1rem; */
+        /* border-top-right-radius: 1rem; */
         background: rgb(127, 76, 128);
         color: lightgrey;
         font-weight: bolder;
@@ -142,9 +233,11 @@ td:nth-child(5) {
     }
     td:nth-child(5)::before {
         content: "Eligibility-> ";
+
     }
     td {
         text-align: right;
+
     }
     td::before {
         float: left;
@@ -162,6 +255,9 @@ td:nth-child(5) {
     .table-striped>tbody>tr:nth-of-type(odd)>* {
         color: black;
     }
+    .table-striped>tbody>tr:nth-of-type(even)>* {
+        color: black;
+    }
     /* #top-container-home,
     #topnav {
         position: fixed;
@@ -177,4 +273,12 @@ td:nth-child(5) {
     .dp {
         margin-left: 10px;
     }
+    #custom-login{
+        margin-top: auto;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    .navbar-dark .navbar-toggler {
+        color: black;
+}
 }

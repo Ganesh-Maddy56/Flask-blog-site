@@ -1,15 +1,4 @@
-window.onscroll = function() {scrollFunction()};
-        
-function scrollFunction() {
-  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-    document.getElementById("navbar").style.top = "0";
-  } else {
-    document.getElementById("navbar").style.top = "-80px";
-  }
-}
-
-
-  // Get the snackbar DIV
+// Get the snackbar DIV
 var x = document.getElementById("snackbar");
 
   // Add the "show" class to DIV
