@@ -1,10 +1,6 @@
-from calendar import month
 from datetime import date
-from email.mime import image
-from operator import methodcaller
-from flask_wtf import form
-from My_Flask_app import app , GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET
-from flask import render_template, redirect, request, url_for, flash
+from My_Flask_app import app,admin,ModelView
+from flask import render_template, redirect, request, url_for, flash, session, abort
 from flask_login import (
     current_user,
     login_required,
@@ -12,15 +8,10 @@ from flask_login import (
     logout_user)
 from My_Flask_app.forms import AccountForm, Registration_Form,Login_Form, Jobs_Form
 from My_Flask_app.models import db,UserData,JobsFromDataBase
-from oauthlib.oauth2 import WebApplicationClient
 
-import json
 import os
-import requests
-import smtplib
 import secrets
 from PIL import Image
-
 
 
 @app.route("/")
@@ -34,10 +25,10 @@ def index():
 @app.route('/register',methods=["POST","GET"])
 def create():
     if current_user.is_authenticated:
+        flash("Already LogedIn !")
         return redirect(url_for('index'))
     
     if request.method == "POST":
-        lg_form = Login_Form()
         form = Registration_Form()
         if form.validate_on_submit():
             username = form.username.data
@@ -53,12 +44,6 @@ def create():
             db.session.add(user)
             db.session.commit()
             flash("Account created successfully !")
-
-            # message = "you registered for my app"
-            # server = smtplib.SMTP("smtp.gmail.com",587)
-            # server.starttls()
-            # server.login("aydensharu@gmail.com", "momdadbrosharook")
-            # server.sendmail("aydensharu@gmail.com", email, message )
             return redirect(url_for('login'))
         else:
             return render_template("register_form.html",form=form)
@@ -72,6 +57,7 @@ def create():
 @app.route('/login',methods=["POST","GET"])
 def login():
     if current_user.is_authenticated:
+        flash("Already logedIn !")
         return redirect(url_for('index'))
 
     if request.method == "POST":
@@ -82,9 +68,9 @@ def login():
             user = UserData.query.filter_by(email=email).first()
             if user is not None and user.check_password(password):
                 login_user(user)
-                return render_template('HomePageBase.html')
+                return redirect(url_for('index'))
             else:
-                flash("You Have to register for login, or your password may be invalid")
+                flash("You Have to SignIn for login, or your password may be invalid")
                 return render_template('login_form.html',form=form)
         else:
             return render_template("login_form.html",form=form)
@@ -92,68 +78,6 @@ def login():
     else:
         form = Login_Form()
         return render_template("login_form.html",form=form)
-
-my_client = WebApplicationClient(GOOGLE_CLIENT_ID)
-
-def google_login_provider():
-    return requests.get("https://accounts.google.com/.well-known/openid-configuration").json()
-
-@app.route('/googlelogin')
-def google_login():
-    get_login_provider=google_login_provider()
-    authorization_endpoint = get_login_provider["authorization_endpoint"]
-    request_uri = my_client.prepare_request_uri(
-        authorization_endpoint,
-        redirect_uri="http://127.0.0.1:5000"+"/new",
-        scope=["email", "profile"],
-    )
-    return redirect(request_uri)
-
-
-@app.route('/new')
-def callback():
-    code = request.args.get("code")
-    get_login_cfg = google_login_provider()
-    token_endpoint = get_login_cfg["token_endpoint"]
-
-    token_url, headers, body = my_client.prepare_token_request(
-    token_endpoint,
-    authorization_response=request.url,
-    redirect_url="http://127.0.0.1:5000/new",
-    code=code
-    )
-    token_response = requests.post(
-    token_url,
-    headers=headers,
-    data=body,
-    auth=(GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET),
-    )
-
-    my_client.parse_request_body_response(json.dumps(token_response.json()))
-
-    userinfo_endpoint = get_login_cfg["userinfo_endpoint"]
-    uri, headers, body = my_client.add_token(userinfo_endpoint)
-    userinfo_response = requests.get(uri, headers=headers, data=body)
-
-
-    if userinfo_response.json().get("email_verified"):
-        # unique_id = userinfo_response.json()["sub"]
-        users_email = userinfo_response.json()["email"]
-        users_name = userinfo_response.json()["given_name"]
-    else:
-        return "User email not available or not verified by Google.", 400
-
-    user = UserData.query.filter_by(email=users_email).first()
-    if user:
-        login_user(user)
-        return redirect(url_for("index"))
-    
-    else:
-        user = UserData(username=users_name, email=users_email)
-        db.session.add(user)
-        db.session.commit()
-        login_user(user)
-        return redirect(url_for("index"))
 
 
 @app.route("/account",methods=["POST","GET"])
@@ -202,26 +126,22 @@ def logout():
         form = Login_Form()
         logout_user()
         flash('Loged-Out Successfull')
-        return render_template('login_form.html',form = form)
+        return redirect(url_for('login'))
 
 
-@app.route("/admin", methods= ["POST", "GET"])
-def adminform():
-    form = Jobs_Form()
-    if request.method == "POST":
-        job_form = Jobs_Form()
-        data = ( job_form.companyname.data, job_form.joblink.data, job_form.jd.data, job_form.salary.data, job_form.eligibility.data)
-        job_fields = JobsFromDataBase(companyname = job_form.companyname.data, joblink = job_form.joblink.data, jd = job_form.jd.data, salary = job_form.salary.data, eligiblity = job_form.eligibility.data)
-        db.session.add(job_fields)
-        db.session.commit()
-        flash("Jobs Updated successfully...")
-        return redirect(url_for('adminform'))
-    else:
-        return render_template("Admin_jobs.html",form=form)
-
-@app.route('/jobs')
+@app.route('/ConsistentJobUpdates')
 def jobs():
     start = date(year=2022,month=1,day=1)
     end = date(year=2022, month=1, day=30)
     data = JobsFromDataBase.query.all()
     return render_template("job_template.html",data = data)
+
+class AdminPageSecure(ModelView):
+    def is_accessible(self):
+        if current_user.is_authenticated:
+            return True
+        else:
+            abort(403)
+
+admin.add_view(AdminPageSecure(JobsFromDataBase,db.session))
+admin.add_view(AdminPageSecure(UserData,db.session))

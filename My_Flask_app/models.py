@@ -4,7 +4,6 @@ from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash,check_password_hash
 from sqlalchemy import Column, String
 from datetime import datetime
-
 db = SQLAlchemy(session_options={"autoflush": False})
 
 

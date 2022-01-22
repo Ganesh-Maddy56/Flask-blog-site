@@ -1,5 +1,6 @@
 hmtl {
     width: 100vw;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -54,11 +55,7 @@ td:nth-child(5) {
     box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px, rgba(0, 0, 0, .14) 0 6px 10px 0, rgba(0, 0, 0, .12) 0 1px 18px 0;
     margin-top: 30px;
     margin-bottom: 50px;
-    border-collapse: collapse;
     outline: none;
-    height: 150px;
-    overflow-y: auto;
-    vertical-align: middle;
 }
 
 .sticky-top {
@@ -106,35 +103,36 @@ td:nth-child(5) {
     padding-left: 1rem;
     padding-right: 1rem;
 }
+#sign-msg{
+    margin-bottom: 40px;
+}
+#form-email, #form-password, #form_button, #form-username{
+    text-align: -webkit-center;
+    font-family: 'Poppins',sans-serif;
+}
 
-/* snack bar */
+#form-email{
+    margin-bottom: 30px;
+}
+.log_form{
+    width: auto;
+
+}
 #snackbar {
     display: flex;
     align-items: center;
     justify-content: center;
     visibility: hidden;
-    /* Hidden by default. Visible on click */
     min-width: 50%;
-    /* Set a default minimum width */
-    /* margin-left: 50%; Divide value of min-width by 2 */
     background-color: pink;
-    /* Black background color */
     color: black;
-    /* White text color */
     text-align: center;
-    /* Centered text */
     border-radius: 2px;
-    /* Rounded borders */
     padding: 16px;
-    /* Padding */
     position: fixed;
-    /* Sit on top of the screen */
     z-index: 1;
-    /* Add a z-index if needed */
     left: 50%;
-    /*Center the snackbar*/
     bottom: 30px;
-    /* 30px from the bottom */
 }
 
 #snackbar.show {
@@ -187,6 +185,14 @@ td:nth-child(5) {
 }
 
 @media screen and (max-width:630px) {
+
+    #custom-table-width{
+        max-width: initial;
+        padding-left: 1rem;
+        padding-right: 1rem;
+
+    }
+
     .table-secondary::after {
         color: black;
     }
@@ -212,10 +218,7 @@ td:nth-child(5) {
         margin-bottom: 10px;
 
     }
-
     td:first-child {
-        /* border-top-left-radius: 1rem; */
-        /* border-top-right-radius: 1rem; */
         background: rgb(127, 76, 128);
         color: lightgrey;
         font-weight: bolder;
@@ -237,13 +240,13 @@ td:nth-child(5) {
     }
     td {
         text-align: right;
-
     }
     td::before {
         float: left;
         margin-right: 4rem;
-        font-weight: 500;
-        color: black;
+        font-weight: bold;
+        color: darkslateblue;
+        outline: none;
     }
     .table-striped>tbody>tr:nth-of-type(odd)>* {
         --bs-table-accent-bg: none;
@@ -258,13 +261,8 @@ td:nth-child(5) {
     .table-striped>tbody>tr:nth-of-type(even)>* {
         color: black;
     }
-    /* #top-container-home,
-    #topnav {
-        position: fixed;
-        top: 0;
-    } */
     #caption {
-        margin-top: 60px;
+        margin-top: 35px;
     }
     #home-btn {
         margin-right: 20px;

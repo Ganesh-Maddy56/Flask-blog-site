@@ -1,40 +1,23 @@
 from flask import Flask 
 from .models import db, UserData
-from flask_mail import Mail, Message
 from flask_login import LoginManager
-import os
-
-
-
-GOOGLE_CLIENT_ID = os.getenv("GOOGLE_CLIENT_ID")
-GOOGLE_CLIENT_SECRET = os.getenv("GOOGLE_CLIENT_SECRET")
-os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
+from flask_admin import Admin
+from flask_admin.contrib.sqla import ModelView
 
 
 app = Flask(__name__)
+admin = Admin(app,name="My-Admin", template_mode='bootstrap3')
 from My_Flask_app import forms, routes
 
 db.init_app(app)
-mail = Mail(app)
 with app.app_context():
     db.create_all()
 
+app.config['FLASK_ADMIN_SWATCH'] = 'Cosmo'
 app.config.from_pyfile('settings.py')
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:shar@localhost/Information'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO'] = False
-# app.config['SECRET_KEY'] = '75e64d694b5c6602148044c51106738c'
-
-
-app.config["MAIL_SERVER"] = 'smtp.gmail.com'
-app.config["MAIL_PORT"] = 465
-app.config["MAIL_USERNAME"] = "aydensharu@gmail.com"
-app.config["MAIL_PASSWORD"] = "momdadbrosharook"
-app.config["MAIL_DEFAULT_SENDER"] = "aydensharu@gmail.com"
-app.config["MAIL_USE_TLS"] = False
-app.config["MAIL_USE_SSL"] = True
-mail= Mail(app)
-
 
 my_login_manager = LoginManager()
 my_login_manager.init_app(app)
