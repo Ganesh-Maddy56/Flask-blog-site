@@ -9,6 +9,7 @@ db = SQLAlchemy(session_options={"autoflush": False})
 
 
 class UserData(db.Model,UserMixin):
+   
     __tablename__ = "user"
 
     id = db.Column(db.BigInteger(),primary_key=True,autoincrement=True)
@@ -16,7 +17,7 @@ class UserData(db.Model,UserMixin):
     email = db.Column(String(200),nullable=False,unique=True)
     password = db.Column(db.String(200))
     image_file = db.Column(db.String(20),nullable = True, default = 'default.jpg')
-    registered_on  = db.Column(db.DateTime(),nullable=False,default= datetime.now)
+    registered_on  = db.Column(db.DateTime(),nullable=False,default= datetime.now().date())
 
     def set_password(self,password):
         self.password = generate_password_hash(password)
@@ -28,18 +29,26 @@ class UserData(db.Model,UserMixin):
         return  f"{self.id}:{self.email}"
   
     def is_active(self):
-        return self.is_active
+        return True
+    
+    def is_authenticated(self):
+        return True
+    
+    def get_id(self):
+        return self.id
 
-class JobsFromDataBase(db.Model):
+class JobsFromDataBase(db.Model,UserMixin):
+    cur_date = datetime.now()
+    date = cur_date.date()
+
     __tablename__ = "jobs"
-
     id = db.Column(db.BigInteger(),primary_key=True,autoincrement=True)
     companyname = db.Column(db.String(100),nullable=False)
     joblink = db.Column(db.String(100),nullable=False)
     jd = db.Column(db.String(1000),nullable=False)
-    salary = db.Column(db.BigInteger())
+    salary = db.Column(db.String(100), nullable=False)
     eligiblity = db.Column(db.String(100),nullable=False)
-    date = db.Column(db.DateTime(),default = datetime.now)
+    created_date = db.Column(db.DateTime(),default = date)
 
     def __repr__(self):
         return  f"{self.id}:{self.companyname}"

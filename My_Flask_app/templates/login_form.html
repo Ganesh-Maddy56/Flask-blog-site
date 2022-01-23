@@ -6,11 +6,10 @@
         <div class="col-md-6 mx-auto">
             <div class="card" id="radius-body">
                 <div class="card-body" >
-                    <!-- Horizontal form -->
                     <form method="POST" autocomplete="off">
                         <div style="text-align: center; font-family: 'Poppins',sans-serif;" id="sign-msg">
                             Don't Have an account?
-                            <a class="btn btn-outline-dark" style="color: tomato; font-size: 1.2rem; text-decoration: none;" href="{{url_for('create')}}">Sign In</a>
+                            <a style="color: tomato; font-size: 1.2rem; margin-left: 0.8rem; text-decoration: none;" href="{{url_for('create')}}">Sign In</a>
                         </div>
                         {{ form.hidden_tag() }}
                         <div class="form-group" id="form-email">
@@ -23,7 +22,6 @@
                             <p>{{ form.email( class="form-control log_form") }}</p>
                             {% endif %}
                         </div>
-
 
                         <div class="form-group" id="form-password">
                             {{ form.password.label(class="form-label") }} {% if form.password.errors %} {{

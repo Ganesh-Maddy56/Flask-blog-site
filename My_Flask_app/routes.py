@@ -1,18 +1,25 @@
-from datetime import date
-from My_Flask_app import app,admin,ModelView
 from flask import render_template, redirect, request, url_for, flash, session, abort
 from flask_login import (
     current_user,
     login_required,
     login_user,
     logout_user)
+import flask_login
 from My_Flask_app.forms import AccountForm, Registration_Form,Login_Form, Jobs_Form
 from My_Flask_app.models import db,UserData,JobsFromDataBase
-
+from My_Flask_app import app
 import os
 import secrets
 from PIL import Image
+from flask_admin import Admin
+from flask_admin.contrib.sqla import ModelView
 
+admin = Admin(app,name="My-Admin", template_mode='bootstrap4')
+
+
+@app.errorhandler(404)
+def errorpage(e):
+    return render_template('Error_page.html'),404
 
 @app.route("/")
 def index():
@@ -43,6 +50,7 @@ def create():
             user.set_password(password)
             db.session.add(user)
             db.session.commit()
+            print(user.get_id())
             flash("Account created successfully !")
             return redirect(url_for('login'))
         else:
@@ -79,8 +87,8 @@ def login():
         form = Login_Form()
         return render_template("login_form.html",form=form)
 
-
 @app.route("/account",methods=["POST","GET"])
+@login_required
 def account():
     if current_user.is_authenticated:
         form = AccountForm()
@@ -116,32 +124,38 @@ def save_user_pic(User_picture):
     i.save(file_path)
     return picture_name
 
-
 @app.route("/logout")
+@login_required
 def logout():
-    if not current_user.is_authenticated:
-        flash('No-User Loged-In, Login First')
-        return redirect(url_for('login'))
-    else:
-        form = Login_Form()
-        logout_user()
-        flash('Loged-Out Successfull')
-        return redirect(url_for('login'))
-
+    print(current_user.id)
+    logout_user()
+    flash('Loged-Out Successfull')
+    return redirect(url_for('login'))
 
 @app.route('/ConsistentJobUpdates')
 def jobs():
-    start = date(year=2022,month=1,day=1)
-    end = date(year=2022, month=1, day=30)
     data = JobsFromDataBase.query.all()
     return render_template("job_template.html",data = data)
 
-class AdminPageSecure(ModelView):
-    def is_accessible(self):
-        if current_user.is_authenticated:
-            return True
-        else:
-            abort(403)
+class Adminaccessecure(ModelView):
 
-admin.add_view(AdminPageSecure(JobsFromDataBase,db.session))
-admin.add_view(AdminPageSecure(UserData,db.session))
+    def is_accessible(self):
+        return flask_login.current_user.is_authenticated and current_user.id == 1
+           
+admin.add_view(Adminaccessecure(JobsFromDataBase,db.session))
+admin.add_view(Adminaccessecure(UserData,db.session))
+
+
+@app.route('/contact',methods=["POST","GET"])
+def contact():
+    if request.method == "POST":
+        name = request.form.get("name")
+        email = request.form.get("email")
+        message = request.form.get("message")
+        print(name, email, message)
+        flash("Thanks For Reaching Us")
+        return redirect(url_for('contact'))
+ 
+    return render_template('contact_form.html')
+
+    

@@ -1,0 +1,47 @@
+{% extends 'HomePageBase.html' %} {% block title %}
+<title>Contact-Us</title>
+{% endblock %}
+{%block content%}
+
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <div class="card" id="radius-body">
+                <div class="card-body">
+                    <section class="get-in-touch">
+                        <div style="text-align: center; font-family: 'Poppins',sans-serif; font-size: 1.4rem;"
+                            id="sign-msg">
+                            Get-in-touch | Wish a website <br>
+                            Message Us
+                        </div>
+                        <form class="contact-form row" style="font-family: 'Poppins';" autocomplete="off" method="POST" action="{{url_for('contact')}}">
+                            <div class="form-field col-lg-6">
+                                <input id="name" class="input-text js-input" type="text" required name="name"
+                                    style="background-color: #e2e3e5;">
+                                <label class="label" for="name">Name</label>
+                            </div>
+
+                            <div class="form-field col-lg-6 ">
+                                <input id="email" class="input-text js-input" type="email" required
+                                    style="background-color: #e2e3e5;" name="email">
+                                <label class="label" for="email">E-mail</label>
+                            </div>
+
+                            <div class="form-field col-lg-12">
+                                <input id="message" class="input-text js-input" type="text" required
+                                    style="background-color: #e2e3e5;" name="message">
+                                <label class="label" for="message">Message</label>
+                            </div>
+                            <div class="form-field col-lg-12" style="text-align: center;">
+                                <input class="btn btn-dark" type="submit" value="Send Message"
+                                    style="border-radius: 1rem; font-family: 'Poppins';">
+                            </div>
+                        </form>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
