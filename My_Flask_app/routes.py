@@ -155,7 +155,7 @@ def contact():
         print(name, email, message)
         flash("Thanks For Reaching Us")
         return redirect(url_for('contact'))
- 
-    return render_template('contact_form.html')
+    else:
+        return render_template('contact_form.html')
 
     
