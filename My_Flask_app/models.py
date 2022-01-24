@@ -7,7 +7,6 @@ from datetime import datetime
 db = SQLAlchemy(session_options={"autoflush": False})
 
 
-
 class UserData(db.Model,UserMixin):
    
     __tablename__ = "user"
@@ -51,4 +50,4 @@ class JobsFromDataBase(db.Model,UserMixin):
     created_date = db.Column(db.DateTime(),default = date)
 
     def __repr__(self):
-        return  f"{self.id}:{self.companyname}"
+        return  f"{self.id}:{self.companyname}:{self.jd}:{self.eligiblity}"

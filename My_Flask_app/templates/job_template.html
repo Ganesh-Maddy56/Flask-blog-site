@@ -21,7 +21,7 @@
         <nav class="navbar navbar-dark navbar-expand-sm"
             style="background-color: #212529; font-family: 'Poppins',sans-serif;">
             <div class="container-md">
-                <a class="btn btn-outline-light btn-sm" href="{{url_for('index')}}" style="margin-left: 10px;">Home</a>
+                <a class="btn btn-light btn-sm" href="{{url_for('index')}}" style="margin-left: 10px; border-radius: 1rem;">Home</a>
                 <form class="d-flex">
                     <input class="form-control me-2" type="text" autocomplete="off" placeholder="Search Company"
                         aria-label="Search" id="myinput" onkeyup="tablesearch()">
@@ -44,7 +44,7 @@
                 </tr>
             </thead>
             <tbody>
-                {% for user in data[::-1] %}
+                {% for user in data.items %}
                 <tr>
                     <td>{{ user.companyname }}</td>
                     <td> <a href="{{ user.joblink }}"
@@ -59,6 +59,20 @@
         </table>
     </div>
 
+    <div class="container-md" style="text-align: center;">
+        {% for page_num in data.iter_pages(left_edge=1,right_edge=1,left_current=1,right_current=2) %}
+        {% if page_num %}
+        {% if data.page == page_num %}
+        <a class="btn btn-success btn-sm mb-4" href="{{ url_for('jobs', page=page_num) }}">{{ page_num }}</a>
+        {% else %}
+        <a class="btn btn-outline-success btn-sm mb-4" href="{{ url_for('jobs', page=page_num) }}">{{ page_num }}</a>
+        {% endif %}
+        {% else %}
+        <-->
+            {% endif %}
+            {% endfor %}
+    </div>
+
     <div class="container-fluid" id="footer">
         <footer class="bg-dark text-center text-white" id="footer-content">
             <div class="container p-4 pb-0">
@@ -66,12 +80,13 @@
                     <a class="btn btn-outline-light btn-floating m-1 " href="{{url_for('contact')}}" role="button ">
                         <i class="fas fa-address-book"></i>
 
-                        <a class="btn btn-outline-light btn-floating m-1 " href="mailto: aydensharu@gmail.com" role="button ">
+                        <a class="btn btn-outline-light btn-floating m-1 " href="mailto: aydensharu@gmail.com"
+                            role="button ">
                             <i class="far fa-envelope" style="user-select: auto;"></i>
                         </a>
 
-                        <a class="btn btn-outline-light btn-floating m-1 " href="https://www.instagram.com/recentech__/" role="button "><i
-                                class="fab fa-instagram "></i></a>
+                        <a class="btn btn-outline-light btn-floating m-1 " href="https://www.instagram.com/recentech__/"
+                            role="button "><i class="fab fa-instagram "></i></a>
                 </section>
             </div>
 
@@ -107,6 +122,6 @@
             }
         }
     </script>
-    </body>
+</body>
 
 </html>

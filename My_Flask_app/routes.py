@@ -131,7 +131,8 @@ def logout():
 
 @app.route('/ConsistentJobUpdates')
 def jobs():
-    data = JobsFromDataBase.query.all()
+    page = request.args.get('page',1,type=int)
+    data = JobsFromDataBase.query.paginate(page=page,per_page=7)
     return render_template("job_template.html",data = data)
 
 class Adminaccessecure(ModelView):
@@ -149,7 +150,7 @@ def contact():
         name = request.form.get("name")
         email = request.form.get("email")
         message = request.form.get("message")
-        print(name, email, message)
+        print(name, email, message) 
         flash("Thanks For Reaching Us")
         return redirect(url_for('contact'))
     else:
