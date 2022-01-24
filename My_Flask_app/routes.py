@@ -14,9 +14,8 @@ from PIL import Image
 from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
 
+
 admin = Admin(app,name="My-Admin", template_mode='bootstrap4')
-
-
 @app.errorhandler(404)
 def errorpage(e):
     return render_template('Error_page.html'),404
@@ -27,7 +26,6 @@ def index():
         return render_template("HomePageBase.html")
     else:
         return render_template("HomePageBase.html")
-
 
 @app.route('/register',methods=["POST","GET"])
 def create():
@@ -55,11 +53,9 @@ def create():
             return redirect(url_for('login'))
         else:
             return render_template("register_form.html",form=form)
-
     else:
         form = Registration_Form()      
         return render_template("register_form.html",form=form)
-
 
 
 @app.route('/login',methods=["POST","GET"])
@@ -82,10 +78,10 @@ def login():
                 return render_template('login_form.html',form=form)
         else:
             return render_template("login_form.html",form=form)
-
     else:
         form = Login_Form()
         return render_template("login_form.html",form=form)
+
 
 @app.route("/account",methods=["POST","GET"])
 @login_required
@@ -108,7 +104,6 @@ def account():
         image_file = url_for('static',filename='profile_pics/' + current_user.image_file)
         render_template('HomePageBase.html',image_file = image_file)
         return render_template('account.html',image_file=image_file,form=form)
-
     else:
         flash("You Have to login first")
         return redirect(url_for('login'))
@@ -124,6 +119,7 @@ def save_user_pic(User_picture):
     i.save(file_path)
     return picture_name
 
+
 @app.route("/logout")
 @login_required
 def logout():
@@ -131,6 +127,7 @@ def logout():
     logout_user()
     flash('Loged-Out Successfull')
     return redirect(url_for('login'))
+
 
 @app.route('/ConsistentJobUpdates')
 def jobs():
