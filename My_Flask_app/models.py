@@ -15,7 +15,7 @@ class UserData(db.Model,UserMixin):
     username = db.Column(db.String(100),nullable=False)
     email = db.Column(String(200),nullable=False,unique=True)
     password = db.Column(db.String(200))
-    image_file = db.Column(db.String(20),nullable = True, default = 'default.jpg')
+    image_file = db.Column(db.String(20),nullable = True, default = "account.gif")
     registered_on  = db.Column(db.DateTime(),nullable=False,default= datetime.now().date())
 
     def set_password(self,password):

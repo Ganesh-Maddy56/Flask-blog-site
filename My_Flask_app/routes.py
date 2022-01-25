@@ -13,12 +13,23 @@ import secrets
 from PIL import Image
 from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
-
+import smtplib
+from os import environ
 
 admin = Admin(app,name="My-Admin", template_mode='bootstrap4')
 @app.errorhandler(404)
 def errorpage(e):
-    return render_template('Error_page.html'),404
+    error_code = 404
+    error = "Page you requested is not found...."
+    message = "Please check your typo :)"
+    return render_template('Error_page.html',error=error_code,errormsg=error,msg=message,),404
+
+@app.errorhandler(500)
+def errorpage(e):
+    error_code = 500
+    error = "Page you requested is not found...."
+    message = "Please check your typo :)"
+    return render_template('Error_page.html',error=error_code,errormsg=error,msg=message,),500
 
 @app.route("/")
 def index():
@@ -119,7 +130,6 @@ def save_user_pic(User_picture):
     i.save(file_path)
     return picture_name
 
-
 @app.route("/logout")
 @login_required
 def logout():
@@ -132,7 +142,7 @@ def logout():
 @app.route('/ConsistentJobUpdates')
 def jobs():
     page = request.args.get('page',1,type=int)
-    data = JobsFromDataBase.query.paginate(page=page,per_page=7)
+    data = JobsFromDataBase.query.paginate(page=page,per_page=15)
     return render_template("job_template.html",data = data)
 
 class Adminaccessecure(ModelView):
@@ -147,10 +157,13 @@ admin.add_view(Adminaccessecure(UserData,db.session))
 @app.route('/contact',methods=["POST","GET"])
 def contact():
     if request.method == "POST":
-        name = request.form.get("name")
-        email = request.form.get("email")
-        message = request.form.get("message")
-        print(name, email, message) 
+        name = request.form.get('name')
+        email = request.form.get('email')
+        message = request.form.get('message')
+        # server = smtplib.SMTP("smtp.gmail.com",587)
+        # server.starttls()
+        # server.login("mohmdsharook@gmail.com",environ.get('email'))
+        # server.sendmail(from_addr="mohmdsharook@gmail.com",to_addrs=["mohmdsharook@gmail.com"],msg="Message from my website user -> {}\nUser E-mail address -> {}\n Message-> {}".format(name,email,message))
         flash("Thanks For Reaching Us")
         return redirect(url_for('contact'))
     else:

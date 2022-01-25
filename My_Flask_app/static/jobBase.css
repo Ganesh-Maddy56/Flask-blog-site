@@ -6,11 +6,12 @@ hmtl {
 body {
     min-height: 100vh;
     width: 100%;
-    background: #e2e3e5;
+    background: #dbe5ef;
     scroll-behavior: smooth;
     display: flex;
     flex-direction: column;
 }
+
 
 .container {
     padding-left: 0;
@@ -67,7 +68,10 @@ td:nth-child(5) {
 #myinput {
     text-align: center;
 }
-
+.my_image{
+    border-radius: 50%;
+    height: 100px;
+}
 .nav-link {
     font-size: 1.2rem;
 }
@@ -118,7 +122,24 @@ td:nth-child(5) {
 }
 .log_form{
     width: auto;
-
+}
+.social-icons .social-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 3.5rem;
+    width: 3.5rem;
+    background-color: slategray;
+    color: #fff;
+    border-radius: 100%;
+    font-size: 1.5rem;
+    margin-right: 1.5rem;
+}
+.social-icons .social-icon:last-child {
+margin-right: 0;
+}
+.social-icons .social-icon:hover {
+background-color: black;
 }
 #snackbar {
     display: flex;

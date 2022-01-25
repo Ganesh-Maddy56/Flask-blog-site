@@ -18,11 +18,11 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
         integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     {% block title %}
-        {% if title %}
-            <title>{{title}}</title>
-        {% else %}
-            <title>Home</title>
-        {% endif %}
+    {% if title %}
+    <title>{{title}}</title>
+    {% else %}
+    <title>Home</title>
+    {% endif %}
     {% endblock %}
 </head>
 
@@ -36,7 +36,7 @@
     {% endwith %}
     <div class="container-sm" id="top-container-home">
         <nav class="navbar navbar-dark navbar-expand-sm "
-            style="background-color: #212529; font-family: 'Poppins',sans-serif;">
+            style="background-color: #445e74; font-family: 'Poppins',sans-serif;">
             <a class="navbar-brand" href="#" id="home-nav">R</a>
             <button id="home-btn" class="navbar-toggler" type="button" data-toggle="collapse"
                 data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -46,8 +46,11 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" id="home-nav" href="{{url_for('index')}}">Home <span
+                        <a class="nav-link" id="home-nav" href="{{url_for('index')}}">Home<span
                                 class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="home-nav" href="{{url_for('login')}}">Login</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" id="home-nav" href="{{url_for('jobs')}}">Job_Updates</a>
@@ -55,13 +58,14 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle dp" href="#" id="navbarDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            SignUp
+                            Account
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{url_for('login')}}">Login</a>
                             <a class="dropdown-item" href="{{url_for('create')}}">SignUp</a>
-                            <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="{{url_for('logout')}}">Logout</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{{url_for('account')}}">Profile</a>
+                            
                         </div>
                     </li>
                 </ul>
@@ -74,25 +78,27 @@
     </div>
 
     <div class="container-fluid" id="footer">
-        <footer class="bg-dark text-center text-white" id="footer-content">
-            <div class="container p-4 pb-0">
-                <section class="mb-4 ">
-                    <a class="btn btn-outline-light btn-floating m-1 " href="{{url_for('contact')}}" role="button ">
+        <footer class="text-center text-white" id="footer-content" style="background-color: #445e74;">
+            <div class="container p-2 pb-2" style="background-color: #445e74;">
+                <section class="social-icons">
+
+                    <a class="social-icon " href="{{url_for('contact')}}" role="button">
                         <i class="fas fa-address-book"></i>
 
-                    <a class="btn btn-outline-light btn-floating m-1 " href="mailto: aydensharu@gmail.com" role="button">
-                        <i class="far fa-envelope" style="user-select: auto;"></i>
-                    </a>
+                        <a class="social-icon" href="mailto: aydensharu@gmail.com"
+                            role="button">
+                            <i class="far fa-envelope" style="user-select: auto;"></i>
+                        </a>
 
-                    <a class="btn btn-outline-light btn-floating m-1 " href="https://www.instagram.com/recentech__/" role="button "><i
-                            class="fab fa-instagram "></i></a>
+                        <a class="social-icon" href="https://www.instagram.com/recentech__/"
+                            role="button"><i class="fab fa-instagram"></i></a>
 
                 </section>
             </div>
-
-            <div class="text-center p-3 " style="background-color: rgb(127, 76, 128) ">
-                © 2020 Copyright:
-                <a class="text-white " href="https://sharook-portfolio.web.app ">Portfolio</a>
+            <div class="text-center p-3 " style="background-color: #dbe5ef;">
+                <p style="color: black; font-family: 'Poppins',sans-serif;">© 2022 Copyright:
+                    <a class="text-dark " href="https://sharook-portfolio.web.app ">Sharook</a>
+                </p>
             </div>
         </footer>
     </div>
@@ -111,4 +117,5 @@
         integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
         crossorigin="anonymous"></script>
 </body>
+
 </html>

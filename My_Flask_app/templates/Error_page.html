@@ -24,9 +24,9 @@
     <div class="star star5"></div>
 
     <div class="error">
-        <div class="error__title">404</div>
-        <div style="font-size: 1.4rem;">Page you requested is not found....</div>
-        <div class="error__description">Please check your typo :)</div>
+        <div class="error__title">{{error}}</div>
+        <div style="font-size: 1.4rem;">{{errormsg}}</div>
+        <div class="error__description">{{msg}}</div>
         <a href="{{url_for('index')}}" class="btn btn-outline-dark" style="margin-top: 15px;">Home</a>
         <a href="{{url_for('login')}}" class="btn btn-outline-dark" style="margin-top: 15px;">Login</a>
     </div>
