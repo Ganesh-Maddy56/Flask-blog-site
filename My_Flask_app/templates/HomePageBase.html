@@ -46,15 +46,17 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
+                        <a class="nav-link" id="home-nav" href="{{url_for('jobs')}}">Job_Updates</a>
+                    </li>
+                    
+                    <li class="nav-item">
                         <a class="nav-link" id="home-nav" href="{{url_for('index')}}">Home<span
                                 class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" id="home-nav" href="{{url_for('login')}}">Login</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="home-nav" href="{{url_for('jobs')}}">Job_Updates</a>
-                    </li>
+                   
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle dp" href="#" id="navbarDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -72,8 +74,10 @@
             </div>
         </nav>
     </div>
+    <div class="jumbotron">
 
-    <div class="container" id="custom-login">
+    </div>
+    <div class="container mt-md-5 px-md-5" id="custom-login">
         {% block content %} {% endblock %}
     </div>
 
@@ -97,7 +101,7 @@
             </div>
             <div class="text-center p-3 " style="background-color: #dbe5ef;">
                 <p style="color: black; font-family: 'Poppins',sans-serif;">© 2022 Copyright:
-                    <a class="text-dark " href="https://sharook-portfolio.web.app ">Sharook</a>
+                    <a class="lead text-dark " href="https://sharook-portfolio.web.app ">Sharook</a>
                 </p>
             </div>
         </footer>

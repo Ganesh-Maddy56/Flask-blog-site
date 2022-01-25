@@ -1,15 +1,28 @@
 {% extends 'HomePageBase.html' %} {% block title %}
 <title>Login</title>
 {% endblock %} {%block content%}
-<div class="container my-5">
+
+<div class="container-sm">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{url_for('index')}}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{url_for('jobs')}}">Jobs-Fresher Openings</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Contact-Us</li>
+        </ol>
+    </nav>
+</div>
+
+<div class="container my-5" style="margin-top: auto;">
     <div class="row">
         <div class="col-md-6 mx-auto">
             <div class="card" id="radius-body" style="background-color: #dbe5ef;">
-                <div class="card-body" >
+                <div class="card-body">
                     <form method="POST" autocomplete="off">
-                        <div style="text-align: center; font-family: 'Poppins',sans-serif;" id="sign-msg">
+                        <div style="text-align: center; font-family: 'Poppins',sans-serif;  font-size: 1.3rem;"
+                            id="sign-msg">
                             Don't Have an account?
-                            <a style="color: tomato; font-size: 1.2rem; margin-left: 0.8rem; text-decoration: none;" href="{{url_for('create')}}">Sign In</a>
+                            <a style="color: tomato; font-size: 1.4rem; margin-left: 0.8rem; text-decoration: none;"
+                                href="{{url_for('create')}}">Sign In</a>
                         </div>
                         {{ form.hidden_tag() }}
                         <div class="form-group" id="form-email">

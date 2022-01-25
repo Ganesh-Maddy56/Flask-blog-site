@@ -102,10 +102,13 @@ td:nth-child(5) {
     border-radius: 2rem;
     background: #e2e3e5;
     box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px, rgba(0, 0, 0, .14) 0 6px 10px 0, rgba(0, 0, 0, .12) 0 1px 18px 0;
-
+}
+.card-style{
+    border-radius: 1rem;
+    box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px, rgba(0, 0, 0, .14) 0 6px 10px 0, rgba(0, 0, 0, .12) 0 1px 18px 0;
 }
 #custom-login{
-    margin-top: auto;
+    /* margin-top: auto; */
     padding-left: 1rem;
     padding-right: 1rem;
 }
@@ -223,7 +226,7 @@ background-color: black;
         background-color: #e2e3e5;
     }
     body {
-        background-color: #e2e3e5;
+        background-color: #dbe5ef;
     }
     .table-bordered>:not(caption)>* {
         border-width: 0
@@ -242,9 +245,9 @@ background-color: black;
 
     }
     td:first-child {
-        background: rgb(127, 76, 128);
-        color: lightgrey;
-        font-weight: bolder;
+        background: #445e74;;
+        color: white;
+        font-weight: bold;
         text-align: center;
         text-transform: capitalize;
     }
@@ -281,9 +284,7 @@ background-color: black;
     .table-striped>tbody>tr:nth-of-type(odd)>* {
         color: black;
     }
-    .table-striped>tbody>tr:nth-of-type(even)>* {
-        color: black;
-    }
+
     #caption {
         margin-top: 35px;
     }
@@ -300,6 +301,6 @@ background-color: black;
         padding-right: 1rem;
     }
     .navbar-dark .navbar-toggler {
-        color: black;
+        color: #445e74;
 }
 }

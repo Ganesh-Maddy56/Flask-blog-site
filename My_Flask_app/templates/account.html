@@ -7,12 +7,12 @@
 <div class="container my-5">
     <div class="row">
         <div class="col-md-6 mx-auto">
-            <div class="card" id="radius-body">
+            <div class="card" id="radius-body" style="background-color: #dbe5ef;">
                 <div class="card-body">
                     <div class="container d-flex flex-column justify-content-center align-items-center">
                     
                         <img class="my_image" src="{{ image_file }}">
-                        <h2 style="color: black;">{{current_user.username}}</h2>
+                        <h3 style="color: black; font-family: 'Poppins',sans-serif;">{{current_user.username}}</h3>
                         <form method="POST" autocomplete="off" enctype="multipart/form-data">
                             {{ form.hidden_tag() }}
                             <div class="form-group">

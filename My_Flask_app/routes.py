@@ -34,9 +34,9 @@ def errorpage(e):
 @app.route("/")
 def index():
     if current_user.is_authenticated:
-        return render_template("HomePageBase.html")
+        return render_template("landing_page.html")
     else:
-        return render_template("HomePageBase.html")
+        return render_template("landing_page.html")
 
 @app.route('/register',methods=["POST","GET"])
 def create():
@@ -169,4 +169,7 @@ def contact():
     else:
         return render_template('contact_form.html')
 
-    
+
+@app.route('/cmp')
+def joblink():
+    return render_template('JobDescription.html')

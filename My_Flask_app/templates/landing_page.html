@@ -1,0 +1,120 @@
+{% extends 'HomepageBase.html'%}
+{% block title %}
+<title>Home</title>
+{% endblock%}
+
+{%block content %}
+
+<div class="jumbotron text-dark bg-transparent mt-sm-3;">
+    <h5 class="display-5">Hello, world!</h5>
+    <p class="text-muted" style="font-family: 'Poppins';">Hello world! Here you will find some Computer Science fundamentals and algorithms for solving real world problems using Python programming language,
+        and you can find consistent job updates for freshers in the navigation menu or click here to look <span><a class="btn btn-outline-dark btn-sm" href="{{url_for('jobs')}}">Jobs for Freshers</a></span> 
+    </p>
+    <hr class="my-3">
+</div>
+<div class="container my-5" style="font-family: 'Poppins',sans-serif;">
+    <div class="row">
+        <div class="col-12 col-md-4">                              
+            <div class="card mb-4 card-style" style="cursor: pointer;">
+                <div class="card-header" style="background-color: #445e74;">
+                    <h5 class="text-white text-center lead">DSA - Questions</h5>
+                </div>
+                <div class="card-body">
+                    <h6 style="font-family: 'Poppins';" class="card-title">Here You can find Important concepts in Data Structures and Algoriths, for
+                        coding interviews.</h6>
+                    <p class="card-text lead">Problems in data Structures</p>
+                    <a class="btn btn-outline-danger" href="/">Get started</a>
+                </div>
+
+                <div class="card-footer">
+                    <small class="text-muted">Last Updated Aug 2020</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-4">
+            <div class="card mb-4 card-style" style="cursor: pointer;">
+                <div class="card-header" style="background-color: #445e74;">
+                    <h5 class="text-white text-center lead" style="font-family: 'Poppins';">LEETCODE - Questions</h5>
+                </div>
+                <div class="card-body">
+                    <h6 style="font-family: 'Poppins';" class="card-title">Here You can find different levels of problems and its solution for Leetcode questions</h6>
+                    <p class="card-text lead">Day-to-Day Leetcode Problems</p>
+                    <a class="btn btn-outline-danger" href="/">Get started</a>
+                </div>
+
+                <div class="card-footer">
+                    <small class="text-muted">Last Updated Aug 2020</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-4">
+            <div class="card mb-4 card-style" style="cursor: pointer;">
+                <div class="card-header" style="background-color: #445e74;">
+                    <h5 class="text-white text-center lead">Python Frameworks</h5>
+                </div>
+                <div class="card-body">
+                    <h6 style="font-family: 'Poppins';" class="card-title">Web Frameworks in Python like Flask/Django, here you will learn some important topics about it.</h6>
+                    <p class="card-text lead">Flask Micro Framework concepts</p>
+                    <a class="btn btn-outline-danger" href="/">Get started</a>
+                </div>
+
+                <div class="card-footer">
+                    <small class="text-muted">Last Updated Aug 2020</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-4">
+            <div class="card mb-4 card-style" style="cursor: pointer;">
+                <div class="card-header" style="background-color: #445e74;">
+                    <h5 class="text-white text-center lead">Blogs / Articles</h5>
+                </div>
+                <div class="card-body">
+                    <h6 style="font-family: 'Poppins';" class="card-title">Consistent blog updates about Technologies..</h6>
+                    <a class="btn btn-outline-danger" href="{{url_for('contact')}}">Tech Blogs</a>
+                </div>
+
+                <div class="card-footer">
+                    <small class="text-muted">Last Updated Aug 2020</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-4">
+            <div class="card mb-4 card-style" style="cursor: pointer;">
+                <div class="card-header" style="background-color: #445e74;">
+                    <h5 class="text-white text-center lead">Apply Jobs</h5>
+                </div>
+                <div class="card-body">
+                    <h6 style="font-family: 'Poppins';" class="card-title">Daily job updates</h6>
+                    <p class="card-text lead">Fresher Openings</p>
+                    <a class="btn btn-outline-danger" href="{{url_for('jobs')}}">Job-Openings</a>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Last Updated Aug 2020</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-4">
+            <div class="card mb-4 card-style" style="cursor: pointer;">
+                <div class="card-header" style="background-color: #445e74;">
+                    <h5 class="text-white text-center lead">Websites / Portfolio development</h5>
+                </div>
+                <div class="card-body">
+                    <h6 style="font-family: 'Poppins';" class="card-title">Building Responsive websites,
+                        Our websites are designed to work seamlessly on all devices.</h6>
+                    <p class="card-text lead">Contact us</p>
+                    <a class="btn btn-outline-danger" href="{{url_for('contact')}}">Contact</a>
+                </div>
+
+                <div class="card-footer">
+                    <small class="text-muted">Last Updated Aug 2020</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
