@@ -303,4 +303,7 @@ background-color: black;
     .navbar-dark .navbar-toggler {
         color: #445e74;
 }
+    .jumb{
+        margin-top: 2rem;
+    }
 }

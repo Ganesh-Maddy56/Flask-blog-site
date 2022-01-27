@@ -5,10 +5,10 @@
 
 {%block content %}
 
-<div class="jumbotron text-dark bg-transparent mt-sm-3;">
+<div class="jumbotron text-dark bg-transparent mt-sm-3 jumb">
     <h5 class="display-5">Shastechy!</h5>
     <p class="text-muted" style="font-family: 'Poppins';">Hello world! Here you will find some Computer Science fundamentals and algorithms for solving real world problems using Python programming language,
-        and you can find consistent job updates for freshers in the navigation menu or click here to look <span><a class="btn btn-outline-dark btn-sm" href="{{url_for('jobs')}}">Jobs for Freshers</a></span> 
+        and you can find consistent job updates for freshers in the navigation menu or click here to see <span><a class="btn btn-outline-dark btn-sm" href="{{url_for('jobs')}}">Fresher Openings</a></span> 
     </p>
     <hr class="my-3">
 </div>
@@ -106,8 +106,7 @@
                 <div class="card-body">
                     <h6 style="font-family: 'Poppins';" class="card-title">Building Responsive websites,
                         Our websites are designed to work seamlessly on all devices.</h6>
-                    <p class="card-text lead">Contact us</p>
-                    <a class="btn btn-outline-danger" href="{{url_for('contact')}}">Contact</a>
+                    <a class="btn btn-outline-danger" href="{{url_for('contact')}}">Contact us</a>
                 </div>
 
                 <div class="card-footer">

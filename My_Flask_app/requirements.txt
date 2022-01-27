@@ -1,3 +1,4 @@
+alembic==1.7.5
 blinker==1.4
 cachetools==4.2.2
 certifi==2021.5.30
@@ -10,6 +11,7 @@ Flask==2.0.1
 Flask-Admin==1.5.8
 Flask-Login==0.5.0
 Flask-Mail==0.9.1
+Flask-Migrate==3.1.0
 Flask-SQLAlchemy==2.5.1
 Flask-WTF==0.15.1
 google-auth==2.0.2
@@ -17,6 +19,7 @@ greenlet==1.1.1
 idna==3.2
 itsdangerous==2.0.1
 Jinja2==3.0.1
+Mako==1.1.6
 MarkupSafe==2.0.1
 mysql-connector==2.2.9
 mysqlclient==2.1.0

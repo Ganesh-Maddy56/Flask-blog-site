@@ -16,7 +16,7 @@ from flask_admin.contrib.sqla import ModelView
 import smtplib
 from os import environ
 
-admin = Admin(app,name="My-Admin", template_mode='bootstrap4')
+admin = Admin(app,name="Admin-Dashboard", template_mode='bootstrap4')
 @app.errorhandler(404)
 def errorpage(e):
     error_code = 404
@@ -149,9 +149,10 @@ class Adminaccessecure(ModelView):
 
     def is_accessible(self):
         return flask_login.current_user.is_authenticated and current_user.id == 1
-           
-admin.add_view(Adminaccessecure(JobsFromDataBase,db.session))
-admin.add_view(Adminaccessecure(UserData,db.session))
+    
+admin.add_view(Adminaccessecure(JobsFromDataBase,db.session,name='JOBS'))
+admin.add_view(Adminaccessecure(UserData,db.session,name='USERS'))
+
 
 
 @app.route('/contact',methods=["POST","GET"])
@@ -170,6 +171,11 @@ def contact():
         return render_template('contact_form.html')
 
 
-@app.route('/cmp')
-def joblink():
-    return render_template('JobDescription.html')
+@app.route('/job-details/<int:id>')
+def joblink(id):
+    info = JobsFromDataBase.query.get(id)
+    
+    print(info.companyname)
+    print(info.eligiblity)
+    print(info.official_link)
+    return render_template('JobDescription.html',info=info)

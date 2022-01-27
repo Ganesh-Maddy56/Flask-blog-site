@@ -1,4 +1,5 @@
 from email.policy import default
+from enum import unique
 from flask_login.mixins import UserMixin
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash,check_password_hash
@@ -43,11 +44,17 @@ class JobsFromDataBase(db.Model,UserMixin):
     __tablename__ = "jobs"
     id = db.Column(db.BigInteger(),primary_key=True,autoincrement=True)
     companyname = db.Column(db.String(100),nullable=False)
-    joblink = db.Column(db.String(100),nullable=False)
-    jd = db.Column(db.String(1000),nullable=False)
+    joblink = db.Column(db.String(100),nullable=False,)
+    jd = db.Column(db.String(500),nullable=False)
     salary = db.Column(db.String(100), nullable=False)
     eligiblity = db.Column(db.String(100),nullable=False)
     created_date = db.Column(db.DateTime(),default = date)
+    skills_required = db.Column(db.String(2000))
+    responsiblities = db.Column(db.String(2000))
+    official_link = db.Column(db.String(200),nullable=False)
+    end_date = db.Column(db.DateTime())
 
     def __repr__(self):
         return  f"{self.id}:{self.companyname}:{self.jd}:{self.eligiblity}"
+
+

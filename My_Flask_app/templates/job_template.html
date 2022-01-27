@@ -48,7 +48,7 @@
                 {% for user in data.items %}
                 <tr>
                     <td>{{ user.companyname }}</td>
-                    <td> <a href="{{ user.joblink }}"
+                    <td> <a href="{{ url_for('joblink',id = user.id) }}"
                             style="text-decoration: none; font-weight: bold; text-transform: capitalize;">Apply here for
                             -{{user.companyname}}</a></td>
                     <td>{{ user.jd }}</td>

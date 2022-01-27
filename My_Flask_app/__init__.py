@@ -1,13 +1,15 @@
 from flask import Flask 
 from .models import db, UserData
 from flask_login import LoginManager
+from flask_migrate import Migrate
+
 app = Flask(__name__)
 from My_Flask_app import forms, routes
-
 
 db.init_app(app)
 with app.app_context():
     db.create_all()
+migrate = Migrate(app,db)
 
 app.config.from_pyfile('config.py')
 
