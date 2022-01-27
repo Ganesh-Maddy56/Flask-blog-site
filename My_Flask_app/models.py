@@ -16,7 +16,7 @@ class UserData(db.Model,UserMixin):
     username = db.Column(db.String(100),nullable=False)
     email = db.Column(String(200),nullable=False,unique=True)
     password = db.Column(db.String(200))
-    image_file = db.Column(db.String(20),nullable = True, default = "account.gif")
+    image_file = db.Column(db.String(20),nullable = True, default = "default.gif")
     registered_on  = db.Column(db.DateTime(),nullable=False,default= datetime.now().date())
 
     def set_password(self,password):
@@ -44,17 +44,18 @@ class JobsFromDataBase(db.Model,UserMixin):
     __tablename__ = "jobs"
     id = db.Column(db.BigInteger(),primary_key=True,autoincrement=True)
     companyname = db.Column(db.String(100),nullable=False)
-    joblink = db.Column(db.String(100),nullable=False,)
-    jd = db.Column(db.String(500),nullable=False)
+    jd = db.Column(db.String(300),nullable=False)
     salary = db.Column(db.String(100), nullable=False)
-    eligiblity = db.Column(db.String(100),nullable=False)
+    eligibility = db.Column(db.String(100),nullable=False)
+    branch = db.Column(db.String(100),nullable=False)
     created_date = db.Column(db.DateTime(),default = date)
     skills_required = db.Column(db.String(2000))
     responsiblities = db.Column(db.String(2000))
     official_link = db.Column(db.String(200),nullable=False)
-    end_date = db.Column(db.DateTime())
+    location = db.Column(db.String(100))
+    end_date = db.Column(db.DateTime(),nullable=True)
 
     def __repr__(self):
-        return  f"{self.id}:{self.companyname}:{self.jd}:{self.eligiblity}"
+        return  f"{self.id}:{self.companyname}:{self.jd}:{self.eligibility}"
 
 

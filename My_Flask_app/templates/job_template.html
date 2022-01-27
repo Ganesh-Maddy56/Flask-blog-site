@@ -37,23 +37,25 @@
             </caption>
             <thead class="sticky-top align-middle">
                 <tr style="color: white; letter-spacing: 1px; font-weight: bold;" class="table table-dark">
-                    <th data-mdb-sort="true" class="th-color">Company_Name</th>
-                    <th>Job_Link</th>
+                    <th class="th-color">Company-Name</th>
                     <th>Position</th>
                     <th>Salary</th>
                     <th>Eligibility</th>
+                    <th>Branch</th>
+                    <th>Location</th>
                 </tr>
             </thead>
             <tbody>
-                {% for user in data.items %}
+                {% for user in data.items[::-1] %}
                 <tr>
-                    <td>{{ user.companyname }}</td>
-                    <td> <a href="{{ url_for('joblink',id = user.id) }}"
-                            style="text-decoration: none; font-weight: bold; text-transform: capitalize;">Apply here for
-                            -{{user.companyname}}</a></td>
+                    <td style="font-size: 1.3rem;">{{ user.companyname }}<br>
+                    <a href="{{ url_for('joblink',comp_name=user.companyname,id = user.id) }}"
+                        class="badge rounded-pill bg-danger" style="text-decoration: none;text-transform: capitalize; font-size: 13px;">Apply Here</a></td>
                     <td>{{ user.jd }}</td>
-                    <td>{{ user.salary }}</td>
-                    <td>{{ user.eligiblity }}</td>
+                    <td style="text-transform: uppercase;">{{ user.salary }}</td>
+                    <td>{{ user.eligibility }}</td>
+                    <td>{{ user.branch }}</td>
+                    <td style="text-transform: capitalize;">{{ user.location }}</td>
                 </tr>
                 {% endfor %}
             </tbody>
@@ -66,7 +68,7 @@
         {% if data.page == page_num %}
         <a class="btn btn-dark btn-sm mb-4" href="{{ url_for('jobs', page=page_num) }}">{{ page_num }}</a>
         {% else %}
-        <a class="btn btn-outline-success btn-sm mb-4" href="{{ url_for('jobs', page=page_num) }}">{{ page_num }}</a>
+        <a class="btn btn-outline-danger btn-sm mb-4" href="{{ url_for('jobs', page=page_num) }}">{{ page_num }}</a>
         {% endif %}
         {% else %}
         <-->

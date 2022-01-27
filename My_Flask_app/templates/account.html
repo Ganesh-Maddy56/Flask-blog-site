@@ -11,9 +11,10 @@
                 <div class="card-body">
                     <div class="container d-flex flex-column justify-content-center align-items-center">
                     
-                        <img class="my_image" src="{{ image_file }}">
+                        <img class="my_image" src="{{image_file}}">
                         <h3 style="color: black; font-family: 'Poppins',sans-serif;">{{current_user.username}}</h3>
-                        <form method="POST" autocomplete="off" enctype="multipart/form-data">
+                        <a href="{{url_for('delete_user')}}" class="btn btn-outline-dark btn-sm" style="font-family: 'Poppins';">Delete account</a>
+                        <form method="POST" autocomplete="off" enctype="multipart/form-data" style="font-family: 'Poppins',sans-serif;">
                             {{ form.hidden_tag() }}
                             <div class="form-group">
                                 {{ form.username.label(class="form-label") }}
@@ -60,6 +61,8 @@
                             <div id="submit">
                                 {{ form.submit (class="btn btn-dark",onclick=("myFunction()")) }}
                             </div>
+
+                            
                         </form>
                     </div>
                 </div>

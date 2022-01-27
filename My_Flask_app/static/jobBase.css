@@ -252,16 +252,19 @@ background-color: black;
         text-transform: capitalize;
     }
     td:nth-child(2)::before {
-        content: "JobLink-> ";
+        content: "Position-> ";
     }
     td:nth-child(3)::before {
-        content: "Role";
-    }
-    td:nth-child(4)::before {
         content: "Salary";
     }
+    td:nth-child(4)::before {
+        content: "Batch";
+    }
     td:nth-child(5)::before {
-        content: "Eligibility-> ";
+        content: "Branch-> ";
+    }
+    td:nth-child(6)::before {
+        content: "Location-> ";
     }
     td {
         text-align: right;

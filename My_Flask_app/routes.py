@@ -20,15 +20,15 @@ admin = Admin(app,name="Admin-Dashboard", template_mode='bootstrap4')
 @app.errorhandler(404)
 def errorpage(e):
     error_code = 404
-    error = "Page you requested is not found...."
-    message = "Please check your typo :)"
+    error = "Page you requested is not found :( ...."
+    message = "Please check your typo"
     return render_template('Error_page.html',error=error_code,errormsg=error,msg=message,),404
 
 @app.errorhandler(500)
-def errorpage(e):
+def internal_error(e):
     error_code = 500
-    error = "Page you requested is not found...."
-    message = "Please check your typo :)"
+    error = "Internal server error, will update as soon as possible :( ...."
+    message = "Error in our Server"
     return render_template('Error_page.html',error=error_code,errormsg=error,msg=message,),500
 
 @app.route("/")
@@ -113,7 +113,6 @@ def account():
             form.email.data = current_user.email
 
         image_file = url_for('static',filename='profile_pics/' + current_user.image_file)
-        render_template('HomePageBase.html',image_file = image_file)
         return render_template('account.html',image_file=image_file,form=form)
     else:
         flash("You Have to login first")
@@ -148,7 +147,7 @@ def jobs():
 class Adminaccessecure(ModelView):
 
     def is_accessible(self):
-        return flask_login.current_user.is_authenticated and current_user.id == 1
+        return flask_login.current_user.is_authenticated and current_user.email == "sharook@shastechy.com"
     
 admin.add_view(Adminaccessecure(JobsFromDataBase,db.session,name='JOBS'))
 admin.add_view(Adminaccessecure(UserData,db.session,name='USERS'))
@@ -171,11 +170,27 @@ def contact():
         return render_template('contact_form.html')
 
 
-@app.route('/job-details/<int:id>')
-def joblink(id):
+@app.route('/ApplyJobFor/<comp_name>/<int:id>')
+def joblink(comp_name,id):
     info = JobsFromDataBase.query.get(id)
-    
-    print(info.companyname)
-    print(info.eligiblity)
-    print(info.official_link)
-    return render_template('JobDescription.html',info=info)
+    try:
+        if info.id:
+            return render_template('JobDescription.html',info=info)
+    except Exception:
+        error_code = 404
+        error = "Page you requested is not found :( ...."
+        message = "Please check your typo"
+        return render_template('Error_page.html',error=error_code,errormsg=error,msg=message,),404
+
+@app.route('/delete-user')
+def delete_user():
+    user_Data = UserData.query.get(current_user.id)
+    try:
+        if user_Data is not None:
+            db.session.delete(user_Data)
+            db.session.commit()
+            flash("User deleted successfully !")
+            return redirect(url_for('index'))
+    except:
+        flash("User not found!")
+        return redirect(url_for('index'))
