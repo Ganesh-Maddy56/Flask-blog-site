@@ -4,19 +4,17 @@
 {% endblock %}
 
 {% block content %}
-<div class="jumbotron">
-    <div class="container">
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item">
-                    <a href="{{url_for('index')}}">Home</a>
-                </li>
-                <li class="breadcrumb-item active" aria-current="page">
-                    <a href="{{url_for('jobs')}}">Fresher-openings</a>
-                </li>
-            </ol>
-        </nav>
-    </div>
+<div class="container-sm ">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb text-center">
+            <li class="breadcrumb-item">
+                <a href="{{url_for('index')}}">Home</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+                <a href="{{url_for('jobs')}}">Fresher-openings</a>
+            </li>
+        </ol>
+    </nav>
 </div>
 <div class="container-sm my-5 px-md-5 px-sm-4" style="font-family: 'Poppins';">
     <div class="jumbotron text-dark bg-transparent mt-4 text-center">
