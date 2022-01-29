@@ -1,9 +1,7 @@
-from email.policy import default
-from enum import unique
 from flask_login.mixins import UserMixin
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash,check_password_hash
-from sqlalchemy import Column, String
+from sqlalchemy import Column, String,Text
 from datetime import datetime
 db = SQLAlchemy(session_options={"autoflush": False})
 
@@ -26,7 +24,7 @@ class UserData(db.Model,UserMixin):
         return check_password_hash(self.password,password)
  
     def __repr__(self):
-        return  f"{self.id}:{self.email}"
+        return  f"{self.id}:{self.email}:{self.username}"
   
     def is_active(self):
         return True
@@ -59,3 +57,12 @@ class JobsFromDataBase(db.Model,UserMixin):
         return  f"{self.id}:{self.companyname}:{self.jd}:{self.eligibility}"
 
 
+class Blog(db.Model,UserMixin):
+    __tablename__ = 'dailyblogs'
+    id = db.Column(db.BigInteger(),primary_key=True,autoincrement=True)
+    topic = db.Column(db.String(100),nullable=False)
+    content = db.Column(db.Text(),nullable=False)
+    posted_date = db.Column(db.DateTime(),default=datetime.now().date())
+
+    def __repr__(self) -> str:
+        return f"{self.id}:{self.content}:{self.posted_date}"
