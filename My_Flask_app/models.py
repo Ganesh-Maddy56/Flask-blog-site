@@ -1,10 +1,8 @@
 from flask_login.mixins import UserMixin
-from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash,check_password_hash
 from sqlalchemy import Column, String,Text
 from datetime import datetime
-db = SQLAlchemy(session_options={"autoflush": False})
-
+from My_Flask_app import db
 
 class UserData(db.Model,UserMixin):
    
