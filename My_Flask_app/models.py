@@ -8,9 +8,9 @@ class UserData(db.Model,UserMixin):
    
     __tablename__ = "user"
 
-    id = db.Column(db.BigInteger(),primary_key=True,autoincrement=True)
+    id = db.Column(db.Integer(),primary_key=True,autoincrement=True)
     username = db.Column(db.String(100),nullable=False)
-    email = db.Column(String(200),nullable=False,unique=True)
+    email = db.Column(db.String(200),nullable=False,unique=True)
     password = db.Column(db.String(200))
     image_file = db.Column(db.String(20),nullable = True, default = "default.gif")
     registered_on  = db.Column(db.DateTime(),nullable=False,default= datetime.now().date())
@@ -38,7 +38,7 @@ class JobsFromDataBase(db.Model,UserMixin):
     date = cur_date.date()
 
     __tablename__ = "jobs"
-    id = db.Column(db.BigInteger(),primary_key=True,autoincrement=True)
+    id = db.Column(db.Integer(),primary_key=True,autoincrement=True)
     companyname = db.Column(db.String(100),nullable=False)
     jd = db.Column(db.String(300),nullable=False)
     salary = db.Column(db.String(100), nullable=False)
@@ -57,7 +57,7 @@ class JobsFromDataBase(db.Model,UserMixin):
 
 class Blog(db.Model,UserMixin):
     __tablename__ = 'dailyblogs'
-    id = db.Column(db.BigInteger(),primary_key=True,autoincrement=True)
+    id = db.Column(db.Integer(),primary_key=True,autoincrement=True)
     topic = db.Column(db.String(100),nullable=False)
     content = db.Column(db.Text(),nullable=False)
     posted_date = db.Column(db.DateTime(),default=datetime.now().date())
