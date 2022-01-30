@@ -21,8 +21,8 @@ my_login_manager.login_message = "You should login first"
 
 
 @my_login_manager.user_loader
-def load_user(user_id):
-    return db.session.query(UserData).get(user_id)
+def load_user(id):
+    return UserData.query.get(id)
 
 
 

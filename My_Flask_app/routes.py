@@ -6,7 +6,7 @@ from flask_login import (
     logout_user)
 import flask_login
 from My_Flask_app.forms import AccountForm, Registration_Form,Login_Form, Jobs_Form
-from My_Flask_app.models import db,UserData,JobsFromDataBase
+from My_Flask_app.models import db,UserData,JobsFromDataBase,Blog
 from My_Flask_app import app
 import os
 import secrets
@@ -14,7 +14,6 @@ from PIL import Image
 from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
 import smtplib
-from os import environ
 
 admin = Admin(app,name="Admin-Dashboard", template_mode='bootstrap4')
 @app.errorhandler(404)
@@ -147,10 +146,12 @@ def jobs():
 class Adminaccessecure(ModelView):
 
     def is_accessible(self):
-        return flask_login.current_user.is_authenticated and current_user.email == "sharook@shastechy.com"
+        return flask_login.current_user.is_authenticated and current_user.id==1 and current_user.email == "sharook@shastechy.com"
     
 admin.add_view(Adminaccessecure(JobsFromDataBase,db.session,name='JOBS'))
 admin.add_view(Adminaccessecure(UserData,db.session,name='USERS'))
+admin.add_view(Adminaccessecure(Blog,db.session,name='BlOGS'))
+
 
 
 

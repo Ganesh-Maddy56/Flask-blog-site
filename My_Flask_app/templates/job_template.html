@@ -17,7 +17,7 @@
 </head>
 
 <body>
-    <div class="container-md" id="topnav">
+    <div class="container-fluid" id="topnav">
         <nav class="navbar navbar-dark navbar-expand-sm"
             style="background-color: #445e74; font-family: 'Poppins',sans-serif;">
             <div class="container-md">
@@ -49,8 +49,10 @@
                 {% for user in data.items[::-1] %}
                 <tr>
                     <td style="font-size: 1.3rem;">{{ user.companyname }}<br>
-                    <a href="{{ url_for('joblink',comp_name=user.companyname,id = user.id) }}"
-                        class="badge rounded-pill bg-danger" style="text-decoration: none;text-transform: capitalize; font-size: 13px;">Apply Here</a></td>
+                        <a href="{{ url_for('joblink',comp_name=user.companyname,id = user.id) }}"
+                            class="badge rounded-pill bg-danger"
+                            style="text-decoration: none;text-transform: capitalize; font-size: 13px;">Apply Here</a>
+                    </td>
                     <td>{{ user.jd }}</td>
                     <td style="text-transform: uppercase;">{{ user.salary }}</td>
                     <td>{{ user.eligibility }}</td>

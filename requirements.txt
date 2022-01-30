@@ -1,4 +1,5 @@
 alembic==1.7.5
+APScheduler==2.1.2
 blinker==1.4
 cachetools==4.2.2
 certifi==2021.5.30
