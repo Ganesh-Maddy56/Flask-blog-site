@@ -6,7 +6,7 @@ hmtl {
 body {
     min-height: 100vh;
     width: 100%;
-    background: #dbe5ef;
+    background: #09091b;
     scroll-behavior: smooth;
     display: flex;
     flex-direction: column;
@@ -65,9 +65,6 @@ td:nth-child(5) {
 .form-control{
     border-radius: 1rem;
 }
-#myinput {
-    text-align: center;
-}
 .my_image{
     border-radius: 50%;
     height: 100px;
@@ -78,17 +75,34 @@ td:nth-child(5) {
 
 #myinput {
     border-radius: 3rem;
+    color: white;
     border: none;
+    background: #20273c;
+    text-align: center;
+    margin-top: 1rem;
+    padding: 0.625rem 0.875rem;
 }
+
 
 #home-nav,
 .dp {
-    margin-left: 1rem;
+    font-weight: 500;
+    outline: none;
+    position: relative;
+    line-height: 1.5rem;
+    margin-top: 1rem;
+    padding: 0.625rem 0.875rem;
 }
-
+#home-nav:hover{
+    border: none;
+    border-radius: 1000rem;
+    background-color: #ffffff14;
+    -webkit-font-smoothing: antialiased;
+}
+/* 
 .dp {
-    margin-right: 1rem;
-}
+    margin-right: 2.3rem;
+} */
 
 .navbar {
     border-bottom-left-radius: 2rem;
@@ -103,10 +117,7 @@ td:nth-child(5) {
     background: #e2e3e5;
     box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px, rgba(0, 0, 0, .14) 0 6px 10px 0, rgba(0, 0, 0, .12) 0 1px 18px 0;
 }
-.card-style{
-    border-radius: 1rem;
-    box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px, rgba(0, 0, 0, .14) 0 6px 10px 0, rgba(0, 0, 0, .12) 0 1px 18px 0;
-}
+
 #custom-login{
     /* margin-top: auto; */
     padding-left: 1rem;
@@ -126,13 +137,20 @@ td:nth-child(5) {
 .log_form{
     width: auto;
 }
+#h6-style{
+    font-family:'Inter',sans-serif; 
+    color: #ffffffc7;
+    line-height: 1.4rem; 
+    font-weight: 350;
+    font-size: 1rem;
+}
 .social-icons .social-icon {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     height: 3.5rem;
     width: 3.5rem;
-    background-color: slategray;
+    background-color: #20273c;
     color: #fff;
     border-radius: 100%;
     font-size: 1.5rem;
@@ -142,7 +160,7 @@ td:nth-child(5) {
 margin-right: 0;
 }
 .social-icons .social-icon:hover {
-background-color: black;
+background-color: #ffffff14;
 }
 #snackbar {
     display: flex;
@@ -307,7 +325,7 @@ background-color: black;
         background-color: #e2e3e5;
     }
     body {
-        background-color: #dbe5ef;
+        background-color: #09091b;
     }
     .table-bordered>:not(caption)>* {
         border-width: 0
@@ -326,14 +344,14 @@ background-color: black;
 
     }
     td:first-child {
-        background: #445e74;;
+        background: #20273c;;
         color: white;
         font-weight: bold;
         text-align: center;
         text-transform: capitalize;
     }
     td:nth-child(2)::before {
-        content: "Position-> ";
+    content: "Position-> ";
     }
     td:nth-child(3)::before {
         content: "Salary";
@@ -375,10 +393,7 @@ background-color: black;
     #home-btn {
         margin-right: 20px;
     }
-    #home-nav,
-    .dp {
-        margin-left: 10px;
-    }
+
     #custom-login{
         margin-top: auto;
         padding-left: 1rem;

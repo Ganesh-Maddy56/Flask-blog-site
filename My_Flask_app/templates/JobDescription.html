@@ -4,51 +4,38 @@
 {% endblock %}
 
 {% block content %}
-<div class="container-sm ">
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb text-center">
-            <li class="breadcrumb-item">
-                <a href="{{url_for('index')}}">Home</a>
-            </li>
-            <li class="breadcrumb-item active" aria-current="page">
-                <a href="{{url_for('jobs')}}">Fresher-openings</a>
-            </li>
-        </ol>
-    </nav>
-</div>
-
 <div class="container-sm my-5 px-md-5 px-sm-4" style="font-family: 'Poppins';">
     <div class="jumbotron text-dark bg-transparent mt-4 text-center">
-        <h1 class="display-5" style="text-transform: capitalize;">{{info.companyname}}</h1>
+        <h1 class="display-5" style="text-transform: capitalize;color: #ffffffc7;">{{info.companyname}}</h1>
         <p class="badge bg-success" style="font-size: 1.3rem; margin-left: 1rem; text-transform: capitalize;">Role :
             {{info.jd}} </p>
         <p class="badge bg-primary" style="font-size: 1rem;">Batch : {{ info.eligibility }}</p>
         <p class="badge bg-dark" style="font-size: 1rem;">Branch : {{ info.branch }}</p>
         <p class="badge bg-secondary" style="font-size: 1rem;">Location : {{ info.location }}</p>
         <p class="text-muted">Date posted: {{ info.created_date.strftime('%d-%m-%Y') }}</p>
-        <hr class="my-3">
+        <hr class="my-3 text-info">
     </div>
 
     <div class="container">
-        <h1>Job Overview:</h1>
-        <p class="lead">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Distinctio, provident quibusdam
+        <h1 style="color: #ffffffc7;">Job Overview:</h1>
+        <p class="lead text-muted">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Distinctio, provident quibusdam
             quisquam
             voluptatibus necessitatibus, delectus optio molestiae neque mollitia similique temporibus beatae
             doloremque eos sunt et. Aliquam assumenda commodi mollitia.</p>
 
         <div class="continer-sm mx-auto">
-            <h1>Qualifications:</h1>
-            <p class="lead">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores harum blanditiis et
+            <h1 style="color: #ffffffc7;">Qualifications:</h1>
+            <p class="lead text-muted">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores harum blanditiis et
                 voluptates eum
                 consequatur quo rerum magni aperiam ab reiciendis quisquam sequi eveniet possimus, laborum neque
                 voluptate commodi quaerat?</p>
         </div>
         <div class="container">
-            <h1>Skills Required:</h1>
-            <p class="lead">{{ info.skills_required }}</p>
+            <h1 style="color: #ffffffc7;">Skills Required:</h1>
+            <p class="lead text-muted">{{ info.skills_required }}</p>
             {% if info.responsiblities %}
-            <h1>Responsibilities and Duties:</h1>
-            <p class="lead">{{ info.responsibilities }}</p>
+                <h1 style="color: #ffffffc7;">Responsibilities and Duties:</h1>
+                <p class="lead text-muted">{{ info.responsiblities }}</p>
             {% endif %}
         </div>
         <a class="btn btn-danger" href="{{ info.official_link }}" style="font-size: 1.5rem;">Apply Here</a>

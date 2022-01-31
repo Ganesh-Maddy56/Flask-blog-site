@@ -17,6 +17,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
         integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap" rel="stylesheet">
     {% block title %}
     {% if title %}
     <title>{{title}}</title>
@@ -34,9 +37,8 @@
     {% endfor %}
     {% endif %}
     {% endwith %}
-    <div class="container-fluid" id="top-container-home">
-        <nav class="navbar navbar-dark navbar-expand-sm "
-            style="background-color: #445e74; font-family: 'Poppins',sans-serif;">
+    <div class="container-sm" id="top-container-home">
+        <nav class="navbar navbar-dark navbar-expand-sm " style="font-family: 'Poppins',sans-serif;">
             <a class="navbar-brand" href="#" id="home-nav">ST</a>
             <button id="home-btn" class="navbar-toggler" type="button" data-toggle="collapse"
                 data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -46,19 +48,19 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" id="home-nav" href="{{url_for('jobs')}}">Job_Updates</a>
+                        <a class="nav-link text-light" id="home-nav" href="{{url_for('jobs')}}">Job_Updates</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" id="home-nav" href="{{url_for('index')}}">Home<span
+                        <a class="nav-link text-light" id="home-nav" href="{{url_for('index')}}">Home<span
                                 class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="home-nav" href="{{url_for('login')}}">Login</a>
+                        <a class="nav-link text-light" id="home-nav" href="{{url_for('login')}}">Login</a>
                     </li>
 
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle dp" href="#" id="navbarDropdown" role="button"
+                        <a class="nav-link dropdown-toggle dp text-light" href="#" id="navbarDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Account
                         </a>
@@ -82,8 +84,8 @@
     </div>
 
     <div class="container-fluid" id="footer">
-        <footer class="text-center text-white" id="footer-content" style="background-color: #445e74;">
-            <div class="container p-2 pb-2" style="background-color: #445e74;">
+        <footer class="text-center text-white" id="footer-content" style="background-color: black;">
+            <div class="container p-2 pb-2" style="background-color: black;">
                 <section class="social-icons">
 
                     <a class="social-icon " href="{{url_for('contact')}}" role="button">
@@ -98,9 +100,9 @@
 
                 </section>
             </div>
-            <div class="text-center p-3 " style="background-color: #dbe5ef;">
-                <p style="color: black; font-family: 'Poppins',sans-serif;">© 2022 Copyright:
-                    <a class="lead text-dark " href="https://sharook-portfolio.web.app ">Sharook</a>
+            <div class="text-center p-3 " style="background-color: #09091b">
+                <p style="font-family: 'Poppins',sans-serif; font-size: 0.875rem; color: #ffffffc7;">© 2022 Copyright:
+                    <a class="lead" style="color: #94b9f4;" href="https://sharook-portfolio.web.app ">Sharook</a>
                 </p>
             </div>
         </footer>

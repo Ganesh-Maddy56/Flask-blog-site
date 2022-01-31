@@ -19,13 +19,13 @@
 <body>
     <div class="container-fluid" id="topnav">
         <nav class="navbar navbar-dark navbar-expand-sm"
-            style="background-color: #445e74; font-family: 'Poppins',sans-serif;">
+            style="font-family: 'Poppins',sans-serif;">
             <div class="container-md">
-                <a class="btn btn-light btn-sm" href="{{url_for('index')}}"
-                    style="margin-left: 10px; border-radius: 1rem;">Home</a>
+                <a class="nav-link text-light" id="home-nav" href="{{url_for('index')}}">Home</a>
                 <form class="d-flex">
-                    <input class="form-control me-2" type="text" autocomplete="off" placeholder="Search Company"
-                        aria-label="Search" id="myinput" onkeyup="tablesearch()">
+                    <input class="form-control me-2 " type="text" autocomplete="off"
+                    placeholder= "Search Company"
+                    aria-label="Search" id="myinput" onkeyup="tablesearch()">
                 </form>
             </div>
         </nav>
@@ -33,10 +33,10 @@
     <div class="container-md" id="custom-table-width">
         <table id="mytable"
             class="table table-secondary table-striped bg-dark table-responsive table-borderless table-full caption-top ">
-            <caption id="caption" style="color: black; text-transform: capitalize; font-weight: bold;">List of Jobs
+            <caption class="text-muted" id="caption" style="text-transform: capitalize; font-weight: bold;">List of Jobs
             </caption>
             <thead class="sticky-top align-middle">
-                <tr style="color: white; letter-spacing: 1px; font-weight: bold;" class="table table-dark">
+                <tr style="color: white; letter-spacing: 1px; font-weight: bold;" class="table bg-secondary">
                     <th class="th-color">Company-Name</th>
                     <th>Position</th>
                     <th>Salary</th>
@@ -50,14 +50,14 @@
                 <tr>
                     <td style="font-size: 1.3rem;">{{ user.companyname }}<br>
                         <a href="{{ url_for('joblink',comp_name=user.companyname,id = user.id) }}"
-                            class="badge rounded-pill bg-danger"
-                            style="text-decoration: none;text-transform: capitalize; font-size: 13px;">Apply Here</a>
+                            class="badge rounded-pill bg-info"
+                            style="text-decoration: none;text-transform: capitalize; font-size: 13px; color: blue;">Apply Here</a>
                     </td>
-                    <td>{{ user.jd }}</td>
-                    <td style="text-transform: uppercase;">{{ user.salary }}</td>
-                    <td>{{ user.eligibility }}</td>
-                    <td>{{ user.branch }}</td>
-                    <td style="text-transform: capitalize;">{{ user.location }}</td>
+                    <td class="text-muted" style="font-weight: 600; font-size: 1.1rem;">{{ user.jd }}</td>
+                    <td style="text-transform: uppercase; font-weight: 600" class="text-muted">{{ user.salary }}</td>
+                    <td class="text-muted" style="font-weight: 600; font-size: 1.1rem;">{{ user.eligibility }}</td>
+                    <td class="text-muted" style="font-weight: 600; font-size: 1.1rem;">{{ user.branch }}</td>
+                    <td style="text-transform: capitalize; font-weight: 600" class="text-muted">{{ user.location }}</td>
                 </tr>
                 {% endfor %}
             </tbody>
@@ -79,8 +79,8 @@
     </div>
 
     <div class="container-fluid" id="footer">
-        <footer class="text-center text-white" id="footer-content" style="background-color: #445e74;">
-            <div class="container p-2 pb-2" style="background-color: #445e74;">
+        <footer class="text-center text-white" id="footer-content" style="background-color: black;">
+            <div class="container p-2 pb-2" style="background-color: black;">
                 <section class="social-icons">
                     <a class="social-icon" href="{{url_for('contact')}}" role="button ">
                         <i class="fas fa-address-book"></i>
@@ -94,9 +94,9 @@
                 </section>
             </div>
 
-            <div class="text-center p-3 " style="background-color: #dbe5ef;">
-                <p style="color: black; font-family: 'Poppins',sans-serif;">© 2022 Copyright:
-                    <a class=" lead text-dark " href="https://sharook-portfolio.web.app ">Sharook</a>
+            <div class="text-center p-3 " style="background-color: #09091b;">
+                <p style="font-family: 'Poppins',sans-serif;color: ffffffc7;">© 2022 Copyright:
+                    <a class="lead" style="color: #94b9f4;" href="https://sharook-portfolio.web.app ">Sharook</a>
                 </p>
             </div>
         </footer>
