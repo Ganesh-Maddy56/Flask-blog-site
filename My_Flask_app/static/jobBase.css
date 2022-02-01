@@ -99,10 +99,6 @@ td:nth-child(5) {
     background-color: #ffffff14;
     -webkit-font-smoothing: antialiased;
 }
-/* 
-.dp {
-    margin-right: 2.3rem;
-} */
 
 .navbar {
     border-bottom-left-radius: 2rem;
@@ -144,6 +140,15 @@ td:nth-child(5) {
     font-weight: 350;
     font-size: 1rem;
 }
+#h4-style{
+    color: #c8cdd2;
+    font-weight: 700;
+    font-family: 'Poppins',sans-serif;
+    font-size: 1.5rem;
+    text-transform: capitalize;
+    line-height: 1.5rem;
+}
+
 .social-icons .social-icon {
     display: inline-flex;
     align-items: center;
@@ -351,19 +356,19 @@ background-color: #ffffff14;
         text-transform: capitalize;
     }
     td:nth-child(2)::before {
-    content: "Position-> ";
+    content: "Position :";
     }
     td:nth-child(3)::before {
-        content: "Salary";
+        content: "Salary :";
     }
     td:nth-child(4)::before {
-        content: "Batch";
+        content: "Batch :";
     }
     td:nth-child(5)::before {
-        content: "Branch-> ";
+        content: "Branch :";
     }
     td:nth-child(6)::before {
-        content: "Location-> ";
+        content: "Location : ";
     }
     td {
         text-align: right;
@@ -404,5 +409,9 @@ background-color: #ffffff14;
 }
     .jumb{
         margin-top: 2rem;
+    }
+    #recent-article{
+        margin-left: 1rem;
+        margin-right: 1rem;
     }
 }

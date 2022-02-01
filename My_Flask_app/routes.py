@@ -175,7 +175,7 @@ def contact():
 def joblink(comp_name,id):
     info = JobsFromDataBase.query.get(id)
     try:
-        if info.id:
+        if info.id is not None:
             return render_template('JobDescription.html',info=info)
     except Exception:
         error_code = 404

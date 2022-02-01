@@ -20,7 +20,7 @@
     <div class="container-fluid" id="topnav">
         <nav class="navbar navbar-dark navbar-expand-sm"
             style="font-family: 'Poppins',sans-serif;">
-            <div class="container-md">
+            <div class="container">
                 <a class="nav-link text-light" id="home-nav" href="{{url_for('index')}}">Home</a>
                 <form class="d-flex">
                     <input class="form-control me-2 " type="text" autocomplete="off"
@@ -53,7 +53,7 @@
                             class="badge rounded-pill bg-info"
                             style="text-decoration: none;text-transform: capitalize; font-size: 13px; color: blue;">Apply Here</a>
                     </td>
-                    <td class="text-muted" style="font-weight: 600; font-size: 1.1rem;">{{ user.jd }}</td>
+                    <td class="text-muted" style="font-weight: 600; font-size: 1.1rem; text-transform: capitalize;">{{ user.jd }}</td>
                     <td style="text-transform: uppercase; font-weight: 600" class="text-muted">{{ user.salary }}</td>
                     <td class="text-muted" style="font-weight: 600; font-size: 1.1rem;">{{ user.eligibility }}</td>
                     <td class="text-muted" style="font-weight: 600; font-size: 1.1rem;">{{ user.branch }}</td>
