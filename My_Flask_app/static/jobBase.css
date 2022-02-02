@@ -289,7 +289,7 @@ background-color: #ffffff14;
     -webkit-animation-fill-mode: forwards;
   }
   #custom-scrollbar {
-    overflow-x: scroll;
+    overflow-y: scroll;
   }
   
   #custom-scrollbar::-webkit-scrollbar {

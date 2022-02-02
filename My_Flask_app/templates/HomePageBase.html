@@ -48,14 +48,21 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto">
+                    {% if url_for(request.endpoint, **request.view_args) != '/' %}
+                        <li class="nav-item">
+                            <a class="nav-link text-light" id="home-nav" href="{{url_for('index')}}">Home<span
+                                    class="sr-only">(current)</span></a>
+                        </li>
+                    {% endif %}
+                    
+                    <li class="nav-item">
+                        <a class="nav-link text-light" id="home-nav" href="/">Blogs</a>
+                    </li>
+
                     <li class="nav-item">
                         <a class="nav-link text-light" id="home-nav" href="{{url_for('jobs')}}">Job_Updates</a>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link text-light" id="home-nav" href="{{url_for('index')}}">Home<span
-                                class="sr-only">(current)</span></a>
-                    </li>
                     <li class="nav-item">
                         <a class="nav-link text-light" id="home-nav" href="{{url_for('login')}}">Login</a>
                     </li>
@@ -90,21 +97,21 @@
             <p class="text-muted">Last Updated : {{data.posted_date.strftime('%d-%m-%Y')}}</p>
         </div>
         <div class="container mb-5 p-4" style="background-color:#20273c;color: #ffffffc7;">
-            <h1 class="display-6"
+            <h1 class="display-6 mb-4"
                 style="text-transform: capitalize; text-align: center; color: #ffffffc7; font-family: 'Poppins';">Rotate
                 Array</h1>
             <h4 id="h4-style">question:</h4>
-            <p id="h6-style">{{data.question}}</p>
+            <p id="h6-style" class="mb-4">{{data.question}}</p>
             <h4 id="h4-style">input:</h4>
-            <p id="h6-style">{{data.input}}</p>
+            <p id="h6-style" class="mb-4">{{data.input}}</p>
             <h4 id="h4-style">output:</h4>
-            <p id="h6-style">{{data.output}}</p>
+            <p id="h6-style" class="mb-4">{{data.output}}</p>
             <h4 id="h4-style">explanation:</h4>
-            <p id="h6-style">{{data.explanation}}</p>
+            <p id="h6-style" class="mb-4">{{data.explanation}}</p>
             <div class="container">
                 <h4 id="h4-style">Solution in Python:</h4>
                 <pre id="custom-scrollbar">
-                <code class="language-python">{{data.code}}</code>
+                    <code class="language-python">{{data.code}}</code>
                 </pre>
             </div>
         </div>
