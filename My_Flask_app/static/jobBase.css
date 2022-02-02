@@ -134,14 +134,14 @@ td:nth-child(5) {
     width: auto;
 }
 #h6-style{
-    font-family:'Inter',sans-serif; 
+    font-family:'Poppins',sans-serif; 
     color: #ffffffc7;
     line-height: 1.4rem; 
     font-weight: 350;
     font-size: 1rem;
 }
 #h4-style{
-    color: #c8cdd2;
+    color: #83a3c3;
     font-weight: 700;
     font-family: 'Poppins',sans-serif;
     font-size: 1.5rem;
@@ -288,7 +288,24 @@ background-color: #ffffff14;
     animation-fill-mode: forwards;
     -webkit-animation-fill-mode: forwards;
   }
+  #custom-scrollbar {
+    overflow-x: scroll;
+  }
   
+  #custom-scrollbar::-webkit-scrollbar {
+    width: 0;
+    height: 8px;
+  }
+  
+  #custom-scrollbar::-webkit-scrollbar-track {
+    background: #1E3F20;
+    border-radius: 12px;
+  }
+  
+  #custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #4A7856;
+    border-radius: 12px;
+  }
   @keyframes loader {
     0% {
       transform: translate(-50%,110%);

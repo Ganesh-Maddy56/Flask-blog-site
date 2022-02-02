@@ -20,6 +20,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{url_for('static', filename = 'prism.css')}}">
     {% block title %}
     {% if title %}
     <title>{{title}}</title>
@@ -76,42 +77,38 @@
             </div>
         </nav>
     </div>
-    
+
     <div class="container-sm mt-5">
         {% block content %} {% endblock %}
     </div>
 
     {% if url_for(request.endpoint, **request.view_args) == '/' %}
-        <div class="container-sm">
-            <div class="container-sm text-center" style="font-family: 'Poppins',sans-serif;">
-                <hr class="my-3 text-info">
-                <h1 class="text-muted">Recent Article</h1>
-                <p class="text-muted">Last Updated : Aug 2020</p>
-            </div>
-            <div class="container mb-5 p-4" style="background-color:#20273c;color: #ffffffc7;">
-                <h1 class="display-6"
-                    style="text-transform: capitalize; text-align: center; color: #ffffffc7; font-family: 'Poppins';">Rotate
-                    Array</h1>
-                <h4 id="h4-style">question:</h4>
-                <p id="h6-style">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nulla tenetur ab quibusdam
-                    cupiditate! Voluptate, quo minus. Saepe ipsum adipisci inventore deserunt repudiandae similique consectetur
-                    eius quaerat nobis, cum, assumenda provident.</p>
-                <h4 id="h4-style">input:</h4>
-                <p id="h6-style">Given array: a[1,2,3,4,5]</p>
-                <h4 id="h4-style">output:</h4>
-                <p id="h6-style">a = [4,5,6,7,8]</p>
-                <h4 id="h4-style">explanation:</h4>
-                <p id="h6-style">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita neque ea quis dolor.
-                    Accusantium, dignissimos. Numquam perferendis cumque atque ipsum beatae molestias quisquam vitae dolores.
-                    Error blanditiis exercitationem ab aperiam?</p>
-                <div class="container">
-                    <h4 id="h4-style">Solution in Python:</h4>
-                    <div class="container-sm p-4 text-center" style="background: #ffffff0d;">
-                        welcome
-                    </div>
-                </div>
+    <div class="container-sm">
+        <div class="container-sm text-center" style="font-family: 'Poppins',sans-serif;">
+            <hr class="my-3 text-info">
+            <h1 class="text-muted">Recent Article</h1>
+            <p class="text-muted">Last Updated : {{data.posted_date.strftime('%d-%m-%Y')}}</p>
+        </div>
+        <div class="container mb-5 p-4" style="background-color:#20273c;color: #ffffffc7;">
+            <h1 class="display-6"
+                style="text-transform: capitalize; text-align: center; color: #ffffffc7; font-family: 'Poppins';">Rotate
+                Array</h1>
+            <h4 id="h4-style">question:</h4>
+            <p id="h6-style">{{data.question}}</p>
+            <h4 id="h4-style">input:</h4>
+            <p id="h6-style">{{data.input}}</p>
+            <h4 id="h4-style">output:</h4>
+            <p id="h6-style">{{data.output}}</p>
+            <h4 id="h4-style">explanation:</h4>
+            <p id="h6-style">{{data.explanation}}</p>
+            <div class="container">
+                <h4 id="h4-style">Solution in Python:</h4>
+                <pre id="custom-scrollbar">
+                <code class="language-python">{{data.code}}</code>
+                </pre>
             </div>
         </div>
+    </div>
     {% endif %}
 
     <div class="container-fluid" id="footer">
@@ -138,7 +135,7 @@
         </footer>
     </div>
     <script src="{{url_for('static',filename = 'javascript.js')}}"></script>
-
+    <script src="{{url_for('static',filename = 'allin.js')}}"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js "
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo "
         crossorigin="anonymous "></script>

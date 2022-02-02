@@ -5,8 +5,8 @@ from flask_login import (
     login_user,
     logout_user)
 import flask_login
-from My_Flask_app.forms import AccountForm, Registration_Form,Login_Form, Jobs_Form
-from My_Flask_app.models import db,UserData,JobsFromDataBase,Blog
+from My_Flask_app.forms import AccountForm, Registration_Form,Login_Form
+from My_Flask_app.models import db,UserData,JobsFromDataBase,Blog,ProblemSolving
 from My_Flask_app import app
 import os
 import secrets
@@ -32,10 +32,12 @@ def internal_error(e):
 
 @app.route("/")
 def index():
+    code = ProblemSolving.query.all()
+    data = code[-1]
     if current_user.is_authenticated:
-        return render_template("landing_page.html")
+        return render_template("landing_page.html",data=data)
     else:
-        return render_template("landing_page.html")
+        return render_template("landing_page.html",data=data)
 
 @app.route('/register',methods=["POST","GET"])
 def create():
@@ -150,7 +152,9 @@ class Adminaccessecure(ModelView):
     
 admin.add_view(Adminaccessecure(JobsFromDataBase,db.session,name='JOBS'))
 admin.add_view(Adminaccessecure(UserData,db.session,name='USERS'))
-admin.add_view(Adminaccessecure(Blog,db.session,name='BlOGS'))
+admin.add_view(Adminaccessecure(Blog,db.session,name='BLOGS'))
+admin.add_view(Adminaccessecure(ProblemSolving,db.session,name='Coding_Problems'))
+
 
 
 
@@ -195,3 +199,4 @@ def delete_user():
     except:
         flash("User not found!")
         return redirect(url_for('index'))
+

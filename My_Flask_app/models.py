@@ -1,6 +1,5 @@
 from flask_login.mixins import UserMixin
 from werkzeug.security import generate_password_hash,check_password_hash
-from sqlalchemy import Column, String,Text
 from datetime import datetime
 from My_Flask_app import db
 
@@ -64,3 +63,16 @@ class Blog(db.Model,UserMixin):
 
     def __repr__(self) -> str:
         return f"{self.id}:{self.content}:{self.posted_date}"
+
+class ProblemSolving(db.Model,UserMixin):
+    __tablename__ = 'Problemsolving'
+    id = db.Column(db.Integer(),primary_key=True,autoincrement=True)
+    question = db.Column(db.Text(),nullable=False)
+    input = db.Column(db.Text(),nullable=False)
+    output = db.Column(db.Text(),nullable=False)
+    explanation = db.Column(db.Text(),nullable=False)
+    code = db.Column(db.Text(),nullable=False)
+    posted_date = db.Column(db.DateTime(),default=datetime.now().date())
+
+    def __repr__(self) -> str:
+        return f"{self.id}:{self.code}:{self.posted_date}"
