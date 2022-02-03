@@ -72,7 +72,9 @@ td:nth-child(5) {
 .nav-link {
     font-size: 1.2rem;
 }
-
+#blogsearch{
+    height: 2rem;
+}
 #myinput {
     border-radius: 3rem;
     color: white;
@@ -424,9 +426,6 @@ background-color: #ffffff14;
     .navbar-dark .navbar-toggler {
         color: #445e74;
 }
-    .jumb{
-        margin-top: 2rem;
-    }
     #recent-article{
         margin-left: 1rem;
         margin-right: 1rem;

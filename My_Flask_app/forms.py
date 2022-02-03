@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileAllowed, FileField
-from wtforms import StringField, PasswordField, BooleanField
+from wtforms import StringField, PasswordField, BooleanField, TextField
 from wtforms.fields.simple import SubmitField
 from wtforms.validators import DataRequired, Email, EqualTo, Length, ValidationError
 from flask_login import current_user
@@ -49,3 +49,7 @@ class AccountForm(FlaskForm):
             if user:
                 raise ValidationError("Email is taken, please user another email")
     
+
+class Search(FlaskForm):
+    searched = StringField('searched',validators=[DataRequired()])
+    submit = SubmitField('Submit')

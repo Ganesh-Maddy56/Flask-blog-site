@@ -5,7 +5,7 @@ from flask_login import (
     login_user,
     logout_user)
 import flask_login
-from My_Flask_app.forms import AccountForm, Registration_Form,Login_Form
+from My_Flask_app.forms import AccountForm, Registration_Form,Login_Form,Search
 from My_Flask_app.models import db,UserData,JobsFromDataBase,Blog,ProblemSolving
 from My_Flask_app import app
 import os
@@ -138,15 +138,13 @@ def logout():
     flash('Loged-Out Successfull')
     return redirect(url_for('login'))
 
-
 @app.route('/ConsistentJobUpdates')
 def jobs():
     page = request.args.get('page',1,type=int)
-    data = JobsFromDataBase.query.paginate(page=page,per_page=15)
+    data = JobsFromDataBase.query.paginate(page=page,per_page=12)
     return render_template("job_template.html",data = data)
 
 class Adminaccessecure(ModelView):
-
     def is_accessible(self):
         return flask_login.current_user.is_authenticated and current_user.id==1 and current_user.email == "sharook@shastechy.com"
     
@@ -154,9 +152,6 @@ admin.add_view(Adminaccessecure(JobsFromDataBase,db.session,name='JOBS'))
 admin.add_view(Adminaccessecure(UserData,db.session,name='USERS'))
 admin.add_view(Adminaccessecure(Blog,db.session,name='BLOGS'))
 admin.add_view(Adminaccessecure(ProblemSolving,db.session,name='Coding_Problems'))
-
-
-
 
 
 @app.route('/contact',methods=["POST","GET"])
@@ -173,7 +168,6 @@ def contact():
         return redirect(url_for('contact'))
     else:
         return render_template('contact_form.html')
-
 
 @app.route('/ApplyJobFor/<comp_name>/<int:id>')
 def joblink(comp_name,id):
@@ -200,3 +194,20 @@ def delete_user():
         flash("User not found!")
         return redirect(url_for('index'))
 
+@app.route('/blogs')
+def blogs():
+    form = Search()
+    data = Blog.query.all()
+    data = data[-1]
+    return render_template('blogs.html',form=form,datas = data)
+
+@app.route('/ST-SearchedResult', methods=["POST"])
+def search():
+    form = Search()
+    blog = Blog.query
+    if form.validate_on_submit():
+        searched_for = form.searched.data
+        blog = blog.filter(Blog.topic.like('%' + searched_for + '%'))
+        blog = blog.order_by(Blog.id).all()
+        return render_template('SearchedContent.html',data=blog,searched=searched_for)
+    return redirect(url_for('blogs'))
