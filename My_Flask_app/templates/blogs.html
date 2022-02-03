@@ -1,0 +1,27 @@
+{% extends 'HomePageBase.html' %}
+{% block title %}
+<title>Blogs</title>
+{% endblock %}
+
+{% block content %}
+    <form class="d-flex justify-content-center mt-0" method="POST" action="{{url_for('search')}}">
+        {{ form.hidden_tag() }}
+        <input class="form-control me-2 " type="text" autocomplete="off"
+        placeholder= "Search Topic" name="searched"
+        aria-label="Search" id="myinput" style="width: 25%; min-width: 15rem; font-family: 'Poppins',sans-serif;">
+    </form>
+    <div class="container-sm my-4">
+        <div class="container-sm text-center" style="font-family: 'Poppins',sans-serif;">
+            <hr class="my-3 text-info">
+            <h1 class="text-muted">Recent Blog</h1>
+            <p class="text-muted text-center mt-0">Last Updated : {{ datas.posted_date.strftime('%d-%B-%Y') }}</p>
+
+        </div>
+        <div class="container mb-5 p-3" style="background-color:#20273c;color: #ffffffc7;">
+            <p style="font-size: 1.3rem; font-family: 'Poppins';text-transform: capitalize;" class="text-center">TOPIC : <span class="text-muted" style="font-weight: 600; border-bottom: 2px solid #000; padding-bottom: 1px;">{{datas.topic}}</span></p>
+            <div class="container mt-4 px-3">
+                <p style="font-family: 'Poppins',sans-serif;">{{datas.content}}</p>  
+            </div>
+        </div>
+    </div>
+{% endblock %}
