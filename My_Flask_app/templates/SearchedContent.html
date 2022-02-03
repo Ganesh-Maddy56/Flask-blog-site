@@ -1,17 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Searched-for</title>
-</head>
-<body>
-    <h1>You searched for:</h1>
-    <span>{{ searched }}</span>
-    <hr>
-    {%for i in data%}
-        {{i.content}}
-    {% endfor %}
-</body>
-</html>
+{% extends 'HomePageBase.html'%}
+{% block title %}
+<title>SearchResult-{{ searched }}</title>
+{% endblock %}
+
+{% block content %}
+<div class="container-sm my-4">
+    <div class="container-sm text-center" style="font-family: 'Poppins',sans-serif;">
+        <h3 class="text-muted text-capitalize ">you searched for : <span class="text-light text-capitalize">{{ searched }}</span></h3>
+        <p class="badge bg-secondary text-dark text-capitalize">total available topics - {{ no_of_data }}</p>
+    </div>
+    <div class="container-sm">
+        <a class="btn btn-sm btn-outline-info" href="{{ url_for('blogs')}}" style="font-family: 'Poppins',sans-serif;">< back to blogs</a>
+        <hr class="my-3 text-info">
+    </div>
+    {% if no_of_data > 0 %}
+        {% for i in data %}
+            <div class="container mb-5 p-3 caption-top" style="background-color:#20273c;color: #ffffffc7;">
+                <p style="font-size: 1.3rem; font-family: 'Poppins';text-transform: capitalize;" class="text-center">TOPIC : <span class="text-muted" style="font-weight: 600; border-bottom: 2px solid #000; padding-bottom: 1px;">{{i.topic}}</span></p>
+                <div class="container mt-4 px-3">
+                    <p style="font-family: 'Poppins',sans-serif;">{{i.content}}</p>  
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <h1 class="display-6 text-light text-center text-muted ">There's no relavent topics on <span class="text-light">{{ searched }}</span> are found. Please search for various another topics.</h1>
+    {% endif %}
+</div>
+
+{% endblock %}

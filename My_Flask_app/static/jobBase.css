@@ -84,22 +84,44 @@ td:nth-child(5) {
     margin-top: 1rem;
     padding: 0.625rem 0.875rem;
 }
-
-
 #home-nav,
 .dp {
-    font-weight: 500;
+    font-size: 1.2rem;
+    text-decoration: none;
     outline: none;
     position: relative;
     line-height: 1.5rem;
-    margin-top: 1rem;
+    margin-top: -1rem;
     padding: 0.625rem 0.875rem;
 }
 #home-nav:hover{
     border: none;
     border-radius: 1000rem;
     background-color: #ffffff14;
-    -webkit-font-smoothing: antialiased;
+    /* -webkit-font-smoothing: antialiased; */
+}
+.hover-underline-animation {
+    display: inline-block;
+    position: relative;
+    color: #0087ca;
+  }
+  
+.hover-underline-animation:after {
+content: '';
+position: absolute;
+width: 100%;
+transform: scaleX(0);
+height: 2px;
+bottom: 0;
+left: 0;
+background-color: #0087ca;
+transform-origin: bottom right;
+transition: transform 0.25s ease-out;
+}
+
+.hover-underline-animation:hover:after {
+transform: scaleX(1);
+transform-origin: bottom left;
 }
 
 .navbar {
@@ -334,6 +356,9 @@ background-color: #ffffff14;
   /*mobile phone media   query  */
 
 @media screen and (max-width:630px) {
+    #logo{
+        margin-left: 1rem;
+    }
 
     #custom-table-width{
         max-width: initial;

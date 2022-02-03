@@ -39,7 +39,7 @@ def index():
     else:
         return render_template("landing_page.html",data=data)
 
-@app.route('/register',methods=["POST","GET"])
+@app.route('/ST-register',methods=["POST","GET"])
 def create():
     if current_user.is_authenticated:
         flash("Already LogedIn !")
@@ -70,7 +70,7 @@ def create():
         return render_template("register_form.html",form=form)
 
 
-@app.route('/login',methods=["POST","GET"])
+@app.route('/ST-login',methods=["POST","GET"])
 def login():
     if current_user.is_authenticated:
         flash("Already logedIn !")
@@ -95,7 +95,7 @@ def login():
         return render_template("login_form.html",form=form)
 
 
-@app.route("/account",methods=["POST","GET"])
+@app.route("/ST-account",methods=["POST","GET"])
 @login_required
 def account():
     if current_user.is_authenticated:
@@ -130,7 +130,7 @@ def save_user_pic(User_picture):
     i.save(file_path)
     return picture_name
 
-@app.route("/logout")
+@app.route("/ST-logout")
 @login_required
 def logout():
     print(current_user.id)
@@ -138,7 +138,7 @@ def logout():
     flash('Loged-Out Successfull')
     return redirect(url_for('login'))
 
-@app.route('/ConsistentJobUpdates')
+@app.route('/ST-ConsistentJobUpdates')
 def jobs():
     page = request.args.get('page',1,type=int)
     data = JobsFromDataBase.query.paginate(page=page,per_page=12)
@@ -154,7 +154,7 @@ admin.add_view(Adminaccessecure(Blog,db.session,name='BLOGS'))
 admin.add_view(Adminaccessecure(ProblemSolving,db.session,name='Coding_Problems'))
 
 
-@app.route('/contact',methods=["POST","GET"])
+@app.route('/ST-contact',methods=["POST","GET"])
 def contact():
     if request.method == "POST":
         name = request.form.get('name')
@@ -169,7 +169,7 @@ def contact():
     else:
         return render_template('contact_form.html')
 
-@app.route('/ApplyJobFor/<comp_name>/<int:id>')
+@app.route('/ST-ApplyJobFor/<comp_name>/<int:id>')
 def joblink(comp_name,id):
     info = JobsFromDataBase.query.get(id)
     try:
@@ -181,7 +181,7 @@ def joblink(comp_name,id):
         message = "Please check your typo"
         return render_template('Error_page.html',error=error_code,errormsg=error,msg=message,),404
 
-@app.route('/delete-user')
+@app.route('/ST-delete-user')
 def delete_user():
     user_Data = UserData.query.get(current_user.id)
     try:
@@ -194,7 +194,7 @@ def delete_user():
         flash("User not found!")
         return redirect(url_for('index'))
 
-@app.route('/blogs')
+@app.route('/ST-blogs')
 def blogs():
     form = Search()
     data = Blog.query.all()
@@ -209,5 +209,6 @@ def search():
         searched_for = form.searched.data
         blog = blog.filter(Blog.topic.like('%' + searched_for + '%'))
         blog = blog.order_by(Blog.id).all()
-        return render_template('SearchedContent.html',data=blog,searched=searched_for)
+        no_of_data = len(blog)
+        return render_template('SearchedContent.html',data=blog,searched=searched_for,no_of_data=no_of_data)
     return redirect(url_for('blogs'))
