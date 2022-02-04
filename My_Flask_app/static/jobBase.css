@@ -2,6 +2,9 @@ hmtl {
     width: 100vw;
     scroll-behavior: smooth;
 }
+.poppin-font{
+    font-family: 'Poppins',sans-serif;
+}
 
 body {
     min-height: 100vh;
@@ -11,7 +14,6 @@ body {
     display: flex;
     flex-direction: column;
 }
-
 
 .container {
     padding-left: 0;
@@ -98,7 +100,7 @@ td:nth-child(5) {
     border: none;
     border-radius: 1000rem;
     background-color: #ffffff14;
-    /* -webkit-font-smoothing: antialiased; */
+    -webkit-font-smoothing: antialiased;
 }
 .hover-underline-animation {
     display: inline-block;
@@ -454,5 +456,8 @@ background-color: #ffffff14;
     #recent-article{
         margin-left: 1rem;
         margin-right: 1rem;
+    }
+    #home-nav{
+        margin-top: 1rem;
     }
 }

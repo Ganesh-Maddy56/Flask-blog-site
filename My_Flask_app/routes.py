@@ -169,7 +169,7 @@ def contact():
     else:
         return render_template('contact_form.html')
 
-@app.route('/ST-ApplyJobFor/<comp_name>/<int:id>')
+@app.route('/ST-ApplyJobFor/<string:comp_name>/<int:id>')
 def joblink(comp_name,id):
     info = JobsFromDataBase.query.get(id)
     try:
@@ -195,11 +195,27 @@ def delete_user():
         return redirect(url_for('index'))
 
 @app.route('/ST-blogs')
-def blogs():
+@app.route('/ST-blogs/<string:topic>/<int:id>')
+def blogs(topic=None,id=None):
     form = Search()
     data = Blog.query.all()
-    data = data[-1]
-    return render_template('blogs.html',form=form,datas = data)
+    last_update = data[-1]
+    if url_for(request.endpoint, **request.view_args) == '/ST-blogs':
+        return render_template('blogs.html',form=form,datas = last_update,all_blog_topic=data)
+    elif (topic != None and id!= None):
+        query_blog = Blog.query.get(id)
+        if query_blog is not None and query_blog.topic == topic:
+            return render_template('blogs.html',form=form,clicked_id=query_blog,datas=last_update,all_blog_topic=data)
+        else:
+            error_code = 404
+            error = "Page you requested is not found :( ...."
+            message = "Please check your typo"
+            return render_template('Error_page.html',error=error_code,errormsg=error,msg=message,),404
+    else:
+            error_code = 404
+            error = "Page you requested is not found :( ...."
+            message = "Please check your typo"
+            return render_template('Error_page.html',error=error_code,errormsg=error,msg=message,),404
 
 @app.route('/ST-SearchedResult', methods=["POST"])
 def search():
@@ -212,3 +228,15 @@ def search():
         no_of_data = len(blog)
         return render_template('SearchedContent.html',data=blog,searched=searched_for,no_of_data=no_of_data)
     return redirect(url_for('blogs'))
+
+@app.route('/ST-ShowingBlog/<topic>/<int:id>')
+def PerticularBLog(topic,id):
+    blog = Blog.query.get(id)
+    try:
+        if blog.id is not None:
+            return render_template('blogs.html',info=blog)
+    except Exception:
+        error_code = 404
+        error = "Page you requested is not found :( ...."
+        message = "Please check your typo"
+        return render_template('Error_page.html',error=error_code,errormsg=error,msg=message,),404

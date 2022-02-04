@@ -31,7 +31,7 @@
             {% for user in data.items[::-1] %}
             <tr>
                 <td style="font-size: 1.3rem;">{{ user.companyname }}<br>
-                    <a href="{{ url_for('joblink',comp_name=user.companyname,id = user.id) }}"
+                    <a href="{{ url_for('joblink',comp_name=user.companyname,id=user.id) }}"
                         class="badge rounded-pill bg-info"
                         style="text-decoration: none;text-transform: capitalize; font-size: 13px; color: blue;">Apply
                         Here</a>

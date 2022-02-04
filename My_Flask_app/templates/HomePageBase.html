@@ -23,12 +23,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{url_for('static', filename = 'prism.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename = 'updated_prism.css')}}">
     {% block title %}
     {% if title %}
     <title>{{title}}</title>
     {% else %}
-    <title>Home</title>
+    <title>shastechy -Home</title>
     {% endif %}
     {% endblock %}
 </head>
@@ -57,25 +57,25 @@
                 <ul class="navbar-nav ms-auto">
                     {% if url_for(request.endpoint, **request.view_args) != '/' %}
                     <li class="nav-item">
-                        <a class="text-info" id="home-nav" href="{{url_for('index')}}">Home<span
+                        <a class="text-light" id="home-nav" href="{{url_for('index')}}">Home<span
                                 class="sr-only">(current)</span></a>
                     </li>
                     {% endif %}
 
                     {% if url_for(request.endpoint, **request.view_args) != '/blogs' %}
                     <li class="nav-item">
-                        <a class="text-info" id="home-nav" href="{{url_for('blogs')}}">Blogs</a>
+                        <a class="text-light" id="home-nav" href="{{url_for('blogs')}}">Blogs</a>
                     </li>
                     {% endif %}
 
                     {% if url_for(request.endpoint, **request.view_args) != '/ConsistentJobUpdates' %}
                     <li class="nav-item">
-                        <a class="text-info" id="home-nav" href="{{url_for('jobs')}}">JobUpdates</a>
+                        <a class="text-light" id="home-nav" href="{{url_for('jobs')}}">JobUpdates</a>
                     </li>
                     {% endif %}
 
                     <li class="nav-item">
-                        <a class="text-info" id="home-nav" href="{{url_for('login')}}">Login</a>
+                        <a class="text-light" id="home-nav" href="{{url_for('login')}}">Login</a>
                     </li>
 
                     <li class="nav-item dropdown">
@@ -84,7 +84,7 @@
                             Account
                         </a>
                         <div class="dropdown-menu" style="background: #20273c;" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item text-secondary " href="{{url_for('create')}}">SignUp</a>
+                            <a class="dropdown-item text-secondary" href="{{url_for('create')}}">SignUp</a>
                             <a class="dropdown-item text-secondary" href="{{url_for('logout')}}">Logout</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item text-secondary" href="{{url_for('account')}}">Profile</a>
@@ -106,7 +106,7 @@
             <h1 class="text-muted">Recent Article</h1>
             <p class="text-muted">Last Updated : {{data.posted_date.strftime('%d-%B-%Y')}}</p>
         </div>
-        <div class="container mb-5 p-4" style="background-color:#20273c;color: #ffffffc7;">
+        <div class="container mb-5 py-4 px-3" style="background-color:#20273c;color: #ffffffc7;">
             <h1 class="display-6 mb-4"
                 style="text-transform: capitalize; text-align: center; color: #ffffffc7; font-family: 'Poppins';">Rotate
                 Array</h1>
@@ -120,7 +120,7 @@
             <p id="h6-style" class="mb-4">{{data.explanation}}</p>
             <div class="container">
                 <h4 id="h4-style">Solution in Python:</h4>
-                <pre id="custom-scrollbar">
+                <pre id="custom-scrollbar" class="px-3 pt-2" style="background: rgb(0 0 0 / 30%);">
                     <code class="language-python">{{data.code}}</code>
                 </pre>
             </div>
@@ -151,7 +151,7 @@
         </footer>
     </div>
     <script src="{{url_for('static',filename = 'javascript.js')}}"></script>
-    <script src="{{url_for('static',filename = 'allin.js')}}"></script>
+    <script src="{{url_for('static',filename = 'updated_prism.js')}}"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js "
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo "
         crossorigin="anonymous "></script>

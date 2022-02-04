@@ -1,27 +1,56 @@
 {% extends 'HomePageBase.html' %}
 {% block title %}
-<title>Blogs</title>
+<title>shastechy -Blogs</title>
 {% endblock %}
 
 {% block content %}
-    <form class="d-flex justify-content-center mt-0" method="POST" action="{{url_for('search')}}">
-        {{ form.hidden_tag() }}
-        <input class="form-control me-2 " type="text" autocomplete="off"
-        placeholder= "Search Topic" name="searched"
+<form class="d-flex justify-content-center mt-0" method="POST" action="{{url_for('search')}}">
+    {{ form.hidden_tag() }}
+    <input class="form-control me-2 " type="text" autocomplete="off" placeholder="Search Topic" name="searched"
         aria-label="Search" id="myinput" style="width: 25%; min-width: 15rem; font-family: 'Poppins',sans-serif;">
-    </form>
-    <div class="container-sm my-4">
+</form>
+<div class="container-sm my-4">
+    {% if url_for(request.endpoint, **request.view_args) == '/ST-blogs' %}
         <div class="container-sm text-center" style="font-family: 'Poppins',sans-serif;">
             <hr class="my-3 text-info">
-            <h1 class="text-muted">Recent Blog</h1>
-            <p class="text-muted text-center mt-0">Last Updated : {{ datas.posted_date.strftime('%d-%B-%Y') }}</p>
+            <p class="text-muted text-capitalize fw-bold lead mb-2" style="font-size: 1.6rem;">Recent Blog: <small class="text-light display-6 lead text-capitalize" style="font-size: 2rem;">{{datas.topic}}</small> </p>
+            <p class="text-muted text-center mt-0">Last Updated : {{ datas.posted_date.strftime('%d-%b-%y') }}</p>
 
         </div>
-        <div class="container mb-5 p-3" style="background-color:#20273c;color: #ffffffc7;">
-            <p style="font-size: 1.3rem; font-family: 'Poppins';text-transform: capitalize;" class="text-center">TOPIC : <span class="text-muted" style="font-weight: 600; border-bottom: 2px solid #000; padding-bottom: 1px;">{{datas.topic}}</span></p>
+        <div class="container mb-5 p-2" style="background-color:#20273c;color: #ffffffc7;">
             <div class="container mt-4 px-3">
-                <p style="font-family: 'Poppins',sans-serif;">{{datas.content}}</p>  
+                <p class="lead">{{datas.content}}</p>
             </div>
         </div>
+    {% else %}
+        <div class="container-sm text-center" style="font-family: 'Poppins',sans-serif;">
+            <hr class="my-3 text-info">
+            <p class="text-muted text-capitalize fw-bold lead mb-2" style="font-size: 1.6rem;">Topic: <small class="text-light display-6 text-capitalize" style="font-size: 2rem;">{{clicked_id.topic}}</small> </p>
+            <p class="text-muted text-center mt-0">Last Updated : {{ clicked_id.posted_date.strftime('%d-%b-%y') }}</p>
+
+        </div>
+        <div class="container mb-5 p-2" style="background-color:#20273c;color: #ffffffc7;">
+            <div class="container mt-4 px-3">
+                <p class="lead">{{clicked_id.content}}</p>
+            </div>
+        </div>
+    {% endif %}
+</div>
+
+<div class="container-sm mb-5">
+    <p class="text-muted lead fw-bold">Also Check:</p>
+    <div class="container list-group">
+        {% for value in all_blog_topic %}
+            {% if url_for(request.endpoint, **request.view_args) == '/ST-blogs' %}
+                {% if value.id != datas.id %}
+                    <a href="{{ url_for('blogs',topic=value.topic,id=value.id) }}" class=" hover-underline-animation list-group-item list-group-item-action text-capitalize poppin-font text-info hov" style="background: #ffffff0d;">{{value.topic}}<small class="float-end poppin-font text-success">Posted: {{value.posted_date.strftime('%d-%b-%y')}}</small></a>
+                {% endif %}
+            {% else %}
+                {% if (value.id != clicked_id.id) and (value.id != datas.id) %}
+                    <a href="{{ url_for('blogs',topic=value.topic,id=value.id) }}" class=" hover-underline-animation list-group-item list-group-item-action text-capitalize poppin-font text-info hov" style="background: #ffffff0d;">{{value.topic}}<small class="float-end poppin-font text-success">Posted: {{value.posted_date.strftime('%d-%b-%y')}}</small></a>
+                {% endif %}
+            {% endif %}
+        {% endfor %}
     </div>
+</div>
 {% endblock %}
