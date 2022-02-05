@@ -5,6 +5,7 @@ from flask_login import (
     login_user,
     logout_user)
 import flask_login
+from sqlalchemy import true
 from My_Flask_app.forms import AccountForm, Registration_Form,Login_Form,Search
 from My_Flask_app.models import db,UserData,JobsFromDataBase,Blog,ProblemSolving
 from My_Flask_app import app
@@ -220,20 +221,33 @@ def blogs(topic=None,id=None):
 @app.route('/ST-SearchedResult', methods=["POST"])
 def search():
     form = Search()
-    blog = Blog.query
-    if form.validate_on_submit():
-        searched_for = form.searched.data
-        blog = blog.filter(Blog.topic.like('%' + searched_for + '%'))
-        blog = blog.order_by(Blog.id).all()
-        no_of_data = len(blog)
-        return render_template('SearchedContent.html',data=blog,searched=searched_for,no_of_data=no_of_data)
-    return redirect(url_for('blogs'))
+    print(request.referrer)
+    if request.referrer.endswith('/ST-blogs'):
+        blog = Blog.query
+        if form.validate_on_submit():
+            searched_for = form.searched.data
+            blog = blog.filter(Blog.topic.like('%' + searched_for + '%'))
+            blog = blog.order_by(Blog.id).all()
+            no_of_data = len(blog)
+            return render_template('SearchedContent.html',data=blog,searched=searched_for,no_of_data=no_of_data)
+        return redirect(url_for('blogs'))
+
+    else:
+        prb = ProblemSolving.query
+        if form.validate_on_submit():
+            searched_for = form.searched.data
+            prb = prb.filter(ProblemSolving.ques_topic.like('%' + searched_for + '%'))
+            prb = prb.order_by(ProblemSolving.id).all()
+            no_of_data = len(prb)
+            return render_template('SearchedContent.html',data=prb,searched=searched_for,no_of_data=no_of_data)
+        return redirect(url_for('codingquestions'))
+
 
 @app.route('/ST-ShowingBlog/<topic>/<int:id>')
 def PerticularBLog(topic,id):
     blog = Blog.query.get(id)
     try:
-        if blog.id is not None:
+        if blog is not None:
             return render_template('blogs.html',info=blog)
     except Exception:
         error_code = 404
@@ -241,8 +255,8 @@ def PerticularBLog(topic,id):
         message = "Please check your typo"
         return render_template('Error_page.html',error=error_code,errormsg=error,msg=message,),404
 
-@app.route('/ST-ProblemSolving')
-@app.route('/ST-ProblemSolving/<question_name>/<int:id>')
+@app.route('/ST-ProblemSolving', methods = ["POST","GET"])
+@app.route('/ST-ProblemSolving/<question_name>/<int:id>', methods = ["POST","GET"])
 def codingquestions(question_name=None,id=None):
     form = Search()
     problem = ProblemSolving.query.all()

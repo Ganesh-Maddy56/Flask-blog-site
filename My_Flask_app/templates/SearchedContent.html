@@ -4,26 +4,61 @@
 {% endblock %}
 
 {% block content %}
+
 <div class="container-sm my-4">
     <div class="container-sm text-center" style="font-family: 'Poppins',sans-serif;">
         <h3 class="text-muted text-capitalize ">you searched for : <span class="text-light text-capitalize">{{ searched }}</span></h3>
-        <p class="badge bg-secondary text-dark text-capitalize">total available topics - {{ no_of_data }}</p>
+        {% if request.referrer.endswith('/ST-blogs') %}
+            <p class="badge bg-secondary text-dark text-capitalize">total available topics - {{ no_of_data }}</p>
+        {% else %}
+            <p class="badge bg-secondary text-dark text-capitalize">total related questions - {{ no_of_data }}</p>
+        {% endif %}
     </div>
     <div class="container-sm">
+    {% if request.referrer.endswith('/ST-blogs') %}
         <a class="btn btn-sm btn-outline-info" href="{{ url_for('blogs')}}" style="font-family: 'Poppins',sans-serif;">< back to blogs</a>
+    {% else %}
+        <a class="btn btn-sm btn-outline-info" href="{{ url_for('codingquestions')}}" style="font-family: 'Poppins',sans-serif;">< back to problems</a>
+    {% endif %}
         <hr class="my-3 text-info">
     </div>
+
     {% if no_of_data > 0 %}
         {% for i in data %}
             <div class="container mb-5 p-3 caption-top" style="background-color:#20273c;color: #ffffffc7;">
+            {% if request.referrer.endswith('/ST-blogs') %}
                 <p style="font-size: 1.3rem; font-family: 'Poppins';text-transform: capitalize;" class="text-center">TOPIC : <span class="text-muted" style="font-weight: 600; border-bottom: 2px solid #000; padding-bottom: 1px;">{{i.topic}}</span></p>
+            {% else %}
+                <p style="font-size: 1.3rem; font-family: 'Poppins';text-transform: capitalize;" class="text-center">Problem : <span class="text-muted" style="font-weight: 600; border-bottom: 2px solid #000; padding-bottom: 1px;">{{i.ques_topic}}</span></p>
+            {% endif %}
                 <div class="container mt-4 px-3">
-                    <p style="font-family: 'Poppins',sans-serif;">{{i.content}}</p>  
+                    {% if request.referrer.endswith('/ST-blogs') %}
+                        <p style="font-family: 'Poppins',sans-serif;">{{i.content}}</p>  
+                    {% else %}
+                        <h4 id="h4-style">question:</h4>
+                        <p id="h6-style" class="mb-4">{{i.question}}</p>
+                        <h4 id="h4-style">input:</h4>
+                        <p id="h6-style" class="mb-4">{{i.input}}</p>
+                        <h4 id="h4-style">output:</h4>
+                        <p id="h6-style" class="mb-4">{{i.output}}</p>
+                        <h4 id="h4-style">explanation:</h4>
+                        <p id="h6-style" class="mb-4">{{i.explanation}}</p>
+                        <div class="container">
+                            <h4 id="h4-style">Solution in Python:</h4>
+                            <pre id="custom-scrollbar" class="px-3 pt-2" style="background: rgb(0 0 0 / 30%);">
+                                <code class="language-python">{{i.code}}</code>
+                            </pre>
+                        </div>
+                    {% endif %}
                 </div>
             </div>
         {% endfor %}
     {% else %}
-        <h3 class="display-6 text-light text-center text-muted" style="font-size: 2rem;">There's no relavent topics on <span class="text-light">{{ searched }}</span> were found. Please search for various another topics.</h3>
+        {% if request.referrer.endswith('/ST-blogs') %}
+            <h3 class="display-6 text-light text-center text-muted" style="font-size: 2rem;">There's no relavent topics on <span class="text-light">{{ searched }}</span> were found. Please search for various another topics.</h3>
+        {% else %}
+            <h3 class="display-6 text-light text-center text-muted" style="font-size: 2rem;">There's no relavent problem on <span class="text-light">{{ searched }}</span> were found. Please search for various another problems.</h3>
+        {% endif %}
     {% endif %}
 </div>
 
