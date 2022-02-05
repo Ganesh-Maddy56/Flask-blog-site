@@ -67,6 +67,7 @@ class Blog(db.Model,UserMixin):
 class ProblemSolving(db.Model,UserMixin):
     __tablename__ = 'Problemsolving'
     id = db.Column(db.Integer(),primary_key=True,autoincrement=True)
+    ques_topic = db.Column(db.String(100),nullable=False)
     question = db.Column(db.Text(),nullable=False)
     input = db.Column(db.Text(),nullable=False)
     output = db.Column(db.Text(),nullable=False)

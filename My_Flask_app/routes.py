@@ -240,3 +240,28 @@ def PerticularBLog(topic,id):
         error = "Page you requested is not found :( ...."
         message = "Please check your typo"
         return render_template('Error_page.html',error=error_code,errormsg=error,msg=message,),404
+
+@app.route('/ST-ProblemSolving')
+@app.route('/ST-ProblemSolving/<question_name>/<int:id>')
+def codingquestions(question_name=None,id=None):
+    form = Search()
+    problem = ProblemSolving.query.all()
+    latest_update = problem[-2]
+    last_front = problem[-1]
+    if url_for(request.endpoint, **request.view_args) == '/ST-ProblemSolving':
+        return render_template('problemsolving.html',form=form,latest_update=latest_update,all_blog_topic=problem,last_front=last_front)
+
+    elif (question_name != None and id!= None):
+            query_problem = ProblemSolving.query.get(id)
+            if query_problem is not None and query_problem.ques_topic == question_name:
+                return render_template('problemsolving.html',form=form,latest_update=query_problem,all_blog_topic=problem,last_front=last_front)
+            else:
+                error_code = 404
+                error = "Page you requested is not found :( ...."
+                message = "Please check your typo"
+                return render_template('Error_page.html',error=error_code,errormsg=error,msg=message,),404
+    else:
+            error_code = 404
+            error = "Page you requested is not found :( ...."
+            message = "Please check your typo"
+            return render_template('Error_page.html',error=error_code,errormsg=error,msg=message,),404

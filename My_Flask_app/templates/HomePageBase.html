@@ -98,18 +98,16 @@
     <div class="container mt-4">
         {% block content %} {% endblock %}
     </div>
-
     {% if url_for(request.endpoint, **request.view_args) == '/' %}
     <div class="container-sm">
         <div class="container-sm text-center" style="font-family: 'Poppins',sans-serif;">
             <hr class="my-3 text-info">
             <h1 class="text-muted">Recent Article</h1>
-            <p class="text-muted">Last Updated : {{data.posted_date.strftime('%d-%B-%Y')}}</p>
+            <p class="text-muted">Last Updated : {{data.posted_date.strftime('%d-%b-%Y')}}</p>
         </div>
         <div class="container mb-5 py-4 px-3" style="background-color:#20273c;color: #ffffffc7;">
             <h1 class="display-6 mb-4"
-                style="text-transform: capitalize; text-align: center; color: #ffffffc7; font-family: 'Poppins';">Rotate
-                Array</h1>
+                style="text-transform: capitalize; text-align: center; color: #ffffffc7; font-family: 'Poppins';">{{ data.ques_topic}}</h1>
             <h4 id="h4-style">question:</h4>
             <p id="h6-style" class="mb-4">{{data.question}}</p>
             <h4 id="h4-style">input:</h4>
