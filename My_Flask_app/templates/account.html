@@ -4,17 +4,19 @@
 {% endblock %}
 
 {% block content %}
-<div class="container my-5">
+<div class="container-sm my-5">
     <div class="row">
         <div class="col-md-6 mx-auto">
             <div class="card" id="radius-body" style="background-color: #dbe5ef;">
                 <div class="card-body">
                     <div class="container d-flex flex-column justify-content-center align-items-center">
-                    
+
                         <img class="my_image" src="{{image_file}}">
                         <h3 style="color: black; font-family: 'Poppins',sans-serif;">{{current_user.username}}</h3>
-                        <a href="{{url_for('delete_user')}}" class="btn btn-outline-dark btn-sm" style="font-family: 'Poppins';">Delete account</a>
-                        <form method="POST" autocomplete="off" enctype="multipart/form-data" style="font-family: 'Poppins',sans-serif;">
+                        <a href="{{url_for('delete_user')}}" class="btn btn-outline-dark btn-sm"
+                            style="font-family: 'Poppins';">Delete account</a>
+                        <form method="POST" autocomplete="off" enctype="multipart/form-data"
+                            style="font-family: 'Poppins',sans-serif;">
                             {{ form.hidden_tag() }}
                             <div class="form-group">
                                 {{ form.username.label(class="form-label") }}
@@ -62,7 +64,7 @@
                                 {{ form.submit (class="btn btn-dark",onclick=("myFunction()")) }}
                             </div>
 
-                            
+
                         </form>
                     </div>
                 </div>

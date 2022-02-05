@@ -40,7 +40,7 @@
     <div class="container list-group">
         {% for i in all_blog_topic %}
             {% if i.id != last_front.id and i.id != latest_update.id %}
-                <a href="{{ url_for('codingquestions',question_name=i.ques_topic,id=i.id) }}" class=" hover-underline-animation list-group-item list-group-item-action text-capitalize poppin-font text-info hov" style="background: #ffffff0d;">{{i.ques_topic}}<small class="float-end poppin-font text-success">Posted: {{i.posted_date.strftime('%d-%b-%y')}}</small></a>
+                <a href="{{ url_for('codingquestions',question_name=i.ques_topic.strip(),id=i.id) }}" class=" hover-underline-animation list-group-item list-group-item-action text-capitalize poppin-font text-info hov" style="background: #ffffff0d;">{{i.ques_topic}}<small class="float-end poppin-font text-success">Posted: {{i.posted_date.strftime('%d-%b-%y')}}</small></a>
             {% endif %}
         {% endfor %}
     </div>

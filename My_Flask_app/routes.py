@@ -221,8 +221,8 @@ def blogs(topic=None,id=None):
 @app.route('/ST-SearchedResult', methods=["POST"])
 def search():
     form = Search()
-    print(request.referrer)
-    if request.referrer.endswith('/ST-blogs'):
+    a = request.referrer
+    if (a.endswith('/ST-blogs')) or (a.split('/')[-3] == 'ST-blogs'):
         blog = Blog.query
         if form.validate_on_submit():
             searched_for = form.searched.data
@@ -232,7 +232,7 @@ def search():
             return render_template('SearchedContent.html',data=blog,searched=searched_for,no_of_data=no_of_data)
         return redirect(url_for('blogs'))
 
-    else:
+    elif (a.endswith('/ST-ProblemSolving')) or (a.split('/')[-3] == 'ST-ProblemSolving'):
         prb = ProblemSolving.query
         if form.validate_on_submit():
             searched_for = form.searched.data
@@ -242,18 +242,25 @@ def search():
             return render_template('SearchedContent.html',data=prb,searched=searched_for,no_of_data=no_of_data)
         return redirect(url_for('codingquestions'))
 
+    else:
+        error_code = 404
+        error = "Page you requested is not found :( ...."
+        message = "Please check your typo"
+        return render_template('Error_page.html',error=error_code,errormsg=error,msg=message,),404
+        
 
 @app.route('/ST-ShowingBlog/<topic>/<int:id>')
 def PerticularBLog(topic,id):
     blog = Blog.query.get(id)
     try:
-        if blog is not None:
+        if blog is not None and blog.topic == topic:
             return render_template('blogs.html',info=blog)
     except Exception:
         error_code = 404
         error = "Page you requested is not found :( ...."
         message = "Please check your typo"
         return render_template('Error_page.html',error=error_code,errormsg=error,msg=message,),404
+
 
 @app.route('/ST-ProblemSolving', methods = ["POST","GET"])
 @app.route('/ST-ProblemSolving/<question_name>/<int:id>', methods = ["POST","GET"])
