@@ -13,32 +13,32 @@
     {% if url_for(request.endpoint, **request.view_args) == '/ST-blogs' %}
         <div class="container-sm text-center" style="font-family: 'Poppins',sans-serif;">
             <hr class="my-3 text-info">
-            <p class="text-muted text-capitalize fw-bold lead mb-2" style="font-size: 1.6rem;">Recent Blog: <small class="text-light display-6 lead text-capitalize" style="font-size: 2rem;">{{datas.topic}}</small> </p>
+            <p class="text-muted text-capitalize fw-bold lead mb-1" style="font-size: 1.6rem;">Recent Blog : <small class="text-light display-6 lead text-capitalize round-font" style="font-size: 24px;">{{datas.topic}}</small> </p>
             <p class="text-muted text-center mt-0">Last Updated : {{ datas.posted_date.strftime('%d-%b-%y') }}</p>
 
         </div>
         <div class="container mb-5 p-2" style="background-color:#20273c;color: #ffffffc7;">
-            <div class="container mt-4 px-3">
-                <p class="lead">{{datas.content}}</p>
+            <div class="container mt-3 px-1">
+                <p class="poppin-font" style="font-size: 18px;">{{datas.content}}</p>
             </div>
         </div>
     {% else %}
         <div class="container-sm text-center" style="font-family: 'Poppins',sans-serif;">
             <hr class="my-3 text-info">
-            <p class="text-muted text-capitalize fw-bold lead mb-2" style="font-size: 1.6rem;">Topic: <small class="text-light display-6 text-capitalize" style="font-size: 2rem;">{{clicked_id.topic}}</small> </p>
+            <p class="text-muted text-capitalize fw-bold lead mb-2" style="font-size: 1.6rem;">Topic: <small class="text-light display-6 text-capitalize" style="font-size: 24px;">{{clicked_id.topic}}</small> </p>
             <p class="text-muted text-center mt-0">Last Updated : {{ clicked_id.posted_date.strftime('%d-%b-%y') }}</p>
 
         </div>
         <div class="container mb-5 p-2" style="background-color:#20273c;color: #ffffffc7;">
-            <div class="container mt-4 px-3">
-                <p class="lead">{{clicked_id.content}}</p>
+            <div class="container mt-3 px-1">
+                <p class="poppin-font" style="font-size: 18px;">{{clicked_id.content}}</p>
             </div>
         </div>
     {% endif %}
 </div>
 
 <div class="container-sm mb-5">
-    <p class="text-muted lead fw-bold">Also Check:</p>
+    <p class="text-muted lead fw-bold poppin-font">Also Check:</p>
     <div class="container list-group">
         {% for value in all_blog_topic %}
             {% if url_for(request.endpoint, **request.view_args) == '/ST-blogs' %}

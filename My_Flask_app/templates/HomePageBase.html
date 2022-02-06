@@ -23,6 +23,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{url_for('static', filename = 'updated_prism.css')}}">
     {% block title %}
     {% if title %}
@@ -43,7 +46,8 @@
     {% endwith %}
     <div class="container" id="top-container-home">
         <nav class="navbar navbar-dark navbar-expand-sm " style="font-family: 'Poppins',sans-serif;">
-            <a class="navbar-brand hover-underline-animation" href="#" style="font-size: 20px;font-family: 'Dancing Script', cursive">
+            <a class="navbar-brand hover-underline-animation" href="#"
+                style="font-size: 20px;font-family: 'Dancing Script', cursive">
                 <img id="logo" class="d-inline-block" src="{{url_for('static', filename='corrected.png')}}"
                     style="border-radius: 1000rem;" width="40" height="40" alt="logo">
                 Shastechy
@@ -75,6 +79,10 @@
                     {% endif %}
 
                     <li class="nav-item">
+                        <a class="text-light" id="home-nav" href="{{url_for('codingquestions')}}">ProblemSolving</a>
+                    </li>
+
+                    <li class="nav-item">
                         <a class="text-light" id="home-nav" href="{{url_for('login')}}">Login</a>
                     </li>
 
@@ -102,23 +110,22 @@
     <div class="container-sm">
         <div class="container-sm text-center" style="font-family: 'Poppins',sans-serif;">
             <hr class="my-3 text-info">
-            <h1 class="text-muted">Recent Article</h1>
+            <h2 class="text-muted">Recent Article</h2>
             <p class="text-muted">Last Updated : {{data.posted_date.strftime('%d-%b-%Y')}}</p>
         </div>
-        <div class="container mb-5 py-4 px-3" style="background-color:#20273c;color: #ffffffc7;">
-            <h1 class="display-6 mb-4"
-                style="text-transform: capitalize; text-align: center; color: #ffffffc7; font-family: 'Poppins';">{{ data.ques_topic}}</h1>
-            <h4 id="h4-style">question:</h4>
-            <p id="h6-style" class="mb-4">{{data.question}}</p>
-            <h4 id="h4-style">input:</h4>
-            <p id="h6-style" class="mb-4">{{data.input}}</p>
-            <h4 id="h4-style">output:</h4>
-            <p id="h6-style" class="mb-4">{{data.output}}</p>
-            <h4 id="h4-style">explanation:</h4>
-            <p id="h6-style" class="mb-4">{{data.explanation}}</p>
+        <div class="container mb-5 py-3 px-2" style="background-color:#20273c;color: #ffffffc7;">
+            <p class="text-muted text-capitalize poppin-font lead mb-4 text-center mt-0" style="font-size: 1.6rem;">Problem: <small class="text-light display-6 lead text-capitalize" style="font-size: 24px;">{{data.ques_topic}}</small> </p>
+            <h5 id="h4-style">question:</h5>
+            <p id="h6-style" class="mb-4 mx-3">{{data.question}}</p>
+            <h5 id="h4-style">input:</h5>
+            <p id="h6-style" class="mb-4 mx-3">{{data.input}}</p>
+            <h5 id="h4-style">output:</h5>
+            <p id="h6-style" class="mb-4 mx-3">{{data.output}}</p>
+            <h5 id="h4-style">explanation:</h5>
+            <p id="h6-style" class="mb-4 mx-3">{{data.explanation}}</p>
             <div class="container">
-                <h4 id="h4-style">Solution in Python:</h4>
-                <pre id="custom-scrollbar" class="px-3 pt-2" style="background: rgb(0 0 0 / 30%);">
+                <h5 id="h4-style">Solution in Python:</h5>
+                <pre id="custom-scrollbar" class="px-3 pt-2 " style="background: rgb(0 0 0 / 30%);">
                     <code class="language-python">{{data.code}}</code>
                 </pre>
             </div>

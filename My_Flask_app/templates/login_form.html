@@ -2,20 +2,20 @@
 <title>shastechy -Login</title>
 {% endblock %} {%block content%}
 
-<div class="container my-5" style="margin-top: auto;" id="custom-login">
+<div class="container-sm my-5 m-auto" id="custom-login">
     <div class="row">
         <div class="col-md-6 mx-auto">
-            <div class="card" id="radius-body" style="background-color: #dbe5ef;">
+            <div class="card m-auto" id="radius-body" style="background-color: #20273c;">
                 <div class="card-body">
                     <form method="POST" autocomplete="off">
-                        <div style="text-align: center; font-family: 'Poppins',sans-serif;  font-size: 1.3rem;"
+                        <div style="text-align: center; font-family: 'Poppins',sans-serif;  font-size: 1.3rem;" class="text-muted lead"
                             id="sign-msg">
                             Don't Have an account?
-                            <a style="color: tomato; font-size: 1.4rem; margin-left: 0.8rem; text-decoration: none;"
+                            <a style="font-size: 1.4rem; margin-left: 0.8rem; text-decoration: none;" class="text-info"
                                 href="{{url_for('create')}}">Sign In</a>
                         </div>
                         {{ form.hidden_tag() }}
-                        <div class="form-group" id="form-email">
+                        <div class="form-group text-light" id="form-email">
                             {{ form.email.label(class="form-label") }} {% if form.email.errors %} {{
                             form.email(class="form-control is-invalid log_form") }} {% for i in form.email.errors %}
                             <div class="invalid-text">
@@ -26,7 +26,7 @@
                             {% endif %}
                         </div>
 
-                        <div class="form-group" id="form-password">
+                        <div class="form-group text-light" id="form-password">
                             {{ form.password.label(class="form-label") }} {% if form.password.errors %} {{
                             form.password(class="form-control is-invalid log_form")}} {%for i in form.password.errors %}
                             <div class="invalid-text">
@@ -38,7 +38,7 @@
                         </div>
 
                         <div class="form-group" id="form_button">
-                            {{ form.submit (class="btn btn-outline-dark")}}
+                            {{ form.submit (class="btn btn-outline-info")}}
                         </div>
                     </form>
 

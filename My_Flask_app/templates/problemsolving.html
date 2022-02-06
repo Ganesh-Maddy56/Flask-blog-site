@@ -13,18 +13,18 @@
     <div class="container-sm">
         <div class="container-sm text-center" style="font-family: 'Poppins',sans-serif;">
             <hr class="my-3 text-info">
-            <h1 class="text-muted">question: {{latest_update.ques_topic}}</h1>
-            <p class="text-muted">Last Updated : {{latest_update.posted_date.strftime('%d-%b-%Y')}}</p>
+            <p class="text-muted text-capitalize fw-bold lead mb-1" style="font-size: 1.6rem;">Problem: <small class="text-light display-6 lead text-capitalize" style="font-size: 24px; font-family: 'Varela Round', sans-serif;">{{latest_update.ques_topic}}</small> </p>
+            <p class="text-muted">Posted on : {{latest_update.posted_date.strftime('%d-%b-%Y')}}</p>
         </div>
         <div class="container mb-5 py-4 px-3" style="background-color:#20273c;color: #ffffffc7;">
             <h4 id="h4-style">question:</h4>
-            <p id="h6-style" class="mb-4">{{latest_update.question}}</p>
+            <p id="h6-style" class="mb-4 mx-3">{{latest_update.question}}</p>
             <h4 id="h4-style">input:</h4>
-            <p id="h6-style" class="mb-4">{{latest_update.input}}</p>
+            <p id="h6-style" class="mb-4 mx-3">{{latest_update.input}}</p>
             <h4 id="h4-style">output:</h4>
-            <p id="h6-style" class="mb-4">{{latest_update.output}}</p>
+            <p id="h6-style" class="mb-4 mx-3">{{latest_update.output}}</p>
             <h4 id="h4-style">explanation:</h4>
-            <p id="h6-style" class="mb-4">{{latest_update.explanation}}</p>
+            <p id="h6-style" class="mb-4 mx-3">{{latest_update.explanation}}</p>
             <div class="container">
                 <h4 id="h4-style">Solution in Python:</h4>
                 <pre id="custom-scrollbar" class="px-3 pt-2" style="background: rgb(0 0 0 / 30%);">
