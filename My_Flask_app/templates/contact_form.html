@@ -1,38 +1,38 @@
 {% extends 'HomePageBase.html' %} {% block title %}
-<title>Contact-Us</title>
+<title>Shastechy - Contact-Us</title>
 {% endblock %}
 {%block content%}
 
 <div class="container-sm my-5">
     <div class="row">
         <div class="col-md-6 mx-auto">
-            <div class="card" id="radius-body" style="background-color: #dbe5ef;">
+            <div class="card" id="radius-body" style="background-color: #20273c;">
                 <div class="card-body">
-                    <section class="get-in-touch">
+                    <section class="text-capitalize">
                         <div style="text-align: center; font-family: 'Poppins',sans-serif; font-size: 1.4rem;"
-                            id="sign-msg" class="mb-5 text-muted">
+                            id="sign-msg" class="mb-5 text-muted lead">
                             Get-in-touch | Message Us
                         </div>
                         <form class="contact-form row" style="font-family: 'Poppins';" autocomplete="off" method="POST" action="{{url_for('contact')}}">
                             <div class="form-field col-lg-6">
                                 <input id="name" class="input-text js-input" type="text" required name="name"
-                                    style="background-color: #dbe5ef;">
-                                <label class="label " for="name" style="color: black;">Name</label>
+                                    style="background-color: #20273c; color: #94b9f4;">
+                                <label class="label text-light" for="name">Name :</label>
                             </div>
 
                             <div class="form-field col-lg-6 ">
-                                <input id="email" class="input-text js-input" type="email" required
-                                    style="background-color: #dbe5ef;" name="email">
-                                <label class="label" for="email" style="color: black">E-mail</label>
+                                <input id="email" class="input-text js-input table-light" type="email" required
+                                    style="background-color: #20273c; color: #94b9f4;" name="email">
+                                <label class="label text-light" for="email">E-mail :</label>
                             </div>
 
                             <div class="form-field col-lg-12">
                                 <input id="message" class="input-text js-input" type="text" required
-                                    style="background-color: #dbe5ef;" name="message">
-                                <label class="label" for="message" style="color: black">Message</label>
+                                    style="background-color: #20273c; color: #94b9f4;" name="message">
+                                <label class="label text-light" for="message" >Message :</label>
                             </div>
                             <div class="form-field col-lg-12" style="text-align: center;">
-                                <input class="btn btn-dark" type="submit" value="Send Message"
+                                <input class="btn btn-outline-info" type="submit" value="Send Message"
                                     style="border-radius: 1rem; font-family: 'Poppins';">
                             </div>
                         </form>

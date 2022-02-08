@@ -33,12 +33,16 @@ def internal_error(e):
 
 @app.route("/")
 def index():
+    bg = Blog.query.all()
+    last_update = bg[-1]
     code = ProblemSolving.query.all()
     data = code[-1]
+    jb = JobsFromDataBase.query.all()
+    jdd = jb[-1]
     if current_user.is_authenticated:
-        return render_template("landing_page.html",data=data)
+        return render_template("landing_page.html",data=data,ls=last_update,jb=jdd)
     else:
-        return render_template("landing_page.html",data=data)
+        return render_template("landing_page.html",data=data, ls=last_update,jb=jdd)
 
 @app.route('/ST-register',methods=["POST","GET"])
 def create():
@@ -161,10 +165,10 @@ def contact():
         name = request.form.get('name')
         email = request.form.get('email')
         message = request.form.get('message')
-        # server = smtplib.SMTP("smtp.gmail.com",587)
-        # server.starttls()
-        # server.login("mohmdsharook@gmail.com",environ.get('email'))
-        # server.sendmail(from_addr="mohmdsharook@gmail.com",to_addrs=["mohmdsharook@gmail.com"],msg="Message from my website user -> {}\nUser E-mail address -> {}\n Message-> {}".format(name,email,message))
+        server = smtplib.SMTP("smtp.gmail.com",587)
+        server.starttls()
+        server.login("shastechy@gmail.com",'shastechybusiness')
+        server.sendmail(from_addr="shastechy@gmail.com",to_addrs=["shastechy@gmail.com"],msg="Message from my website user -> {}\nUser E-mail address -> {}\n Message-> {}".format(name,email,message))
         flash("Thanks For Reaching Us")
         return redirect(url_for('contact'))
     else:
@@ -203,6 +207,7 @@ def blogs(topic=None,id=None):
     last_update = data[-1]
     if url_for(request.endpoint, **request.view_args) == '/ST-blogs':
         return render_template('blogs.html',form=form,datas = last_update,all_blog_topic=data)
+
     elif (topic != None and id!= None):
         query_blog = Blog.query.get(id)
         if query_blog is not None and query_blog.topic == topic:

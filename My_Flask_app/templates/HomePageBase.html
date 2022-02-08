@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <link rel="shortcut icon" href="{{ url_for('static', filename='corrected.png') }}" style="border-radius: 1000rem;">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" style="border-radius: 1000rem;">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,7 +31,7 @@
     {% if title %}
     <title>{{title}}</title>
     {% else %}
-    <title>shastechy -Home</title>
+    <title>Shastechy: Home</title>
     {% endif %}
     {% endblock %}
 </head>
@@ -48,9 +48,8 @@
         <nav class="navbar navbar-dark navbar-expand-sm " style="font-family: 'Poppins',sans-serif;">
             <a class="navbar-brand hover-underline-animation" href="#"
                 style="font-size: 20px;font-family: 'Dancing Script', cursive">
-                <img id="logo" class="d-inline-block" src="{{url_for('static', filename='corrected.png')}}"
-                    style="border-radius: 1000rem;" width="40" height="40" alt="logo">
-                Shastechy
+                <img id="logo" class="d-inline-block" src="{{url_for('static', filename='logos.svg')}}"
+                 alt="logo">
             </a>
             <button id="home-btn" class="navbar-toggler" type="button" data-toggle="collapse"
                 data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
