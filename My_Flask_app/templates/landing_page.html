@@ -1,6 +1,6 @@
 {% extends 'HomePageBase.html'%}
 {% block title %}
-<title>shastechy -Home</title>
+<title>Shastechy - Home</title>
 {% endblock%}
 
 {%block content %}
@@ -38,7 +38,7 @@
                 </div>
 
                 <div class="card-footer"style="background: #20273c;">
-                    <small class="text-muted">Last Updated: Aug 2020</small>
+                    <small class="text-muted">Last Updated : {{data.posted_date.strftime('%d-%b-%Y')}}</small>
                 </div>
             </div>
         </div>
@@ -55,7 +55,7 @@
                 </div>
 
                 <div class="card-footer" style="background: #20273c;">
-                    <small class="text-muted">Last Updated: Aug 2020</small>
+                    <small class="text-muted">Last Updated: {{ls.posted_date.strftime('%d-%b-%Y')}}</small>
                 </div>
             </div>
         </div>
@@ -71,7 +71,7 @@
                     <a class="btn btn-outline-danger" href="{{url_for('jobs')}}">Job-Openings</a>
                 </div>
                 <div class="card-footer" style="background: #20273c;">
-                    <small class="text-muted">Last Updated: Aug 2020</small>
+                    <small class="text-muted">Last Updated: {{jb.created_date.strftime('%d-%b-%Y')}}</small>
                 </div>
             </div>
         </div>

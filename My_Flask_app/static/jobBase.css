@@ -1,6 +1,7 @@
 hmtl {
     width: 100vw;
     scroll-behavior: smooth;
+    text-rendering: optimizeLegibility;
 }
 .poppin-font{
     font-family: 'Poppins',sans-serif;
